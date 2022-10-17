@@ -1,56 +1,54 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<div type= "letter"
-	 n=    "16"
-	 from= "Abel Acacio"
-	 to=   "Camilo Castello Branco">
+<tei.2>
 
+    <teiHeader
+        type="letter"
+        id="16"
+        from="Abel Acacio"
+        to="Camilo Castello Branco">>
+        <fileDesc>
+            <titleStmt>
+                <title>
+                    Carta 16 do espólio de Camillo Castello Branco
+                </title>
+                <respStmt>
+                    <resp>editada por</resp>
+                    <name>Henrique Arantes</name>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <publisher />
+                <pubPlace />
+                <date />
+                <media type="sticker" class="catalogation">
+                    <item>Nº - 16 -</item>
+                    <item>- 1884 -</item>
+                </media>
+            </publicationStmt>
+            <sourceDesc>
+                <bibl>Carta 16 do espólio de Camillo Castello Branco, editada por Henrique Arantes (Porto, 2022)</bibl>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
 
-
-    <pb n='1' />
-
-        <teiHeader>
-            <fileDesc>
-                <titleStmt>
-                    <title>
-                        Carta 16 do espólio de Camillo Castello Branco
-                    </title>
-                    <respStmt>
-                        <resp>editada por</resp>
-                        <name>Henrique Arantes</name>
-                    </respStmt>
-                </titleStmt>
-                <publicationStmt>
-                    <publisher />
-                    <pubPlace />
-                    <date />
-                    <media type="sticker" class="catalogation">
-                        <item>Nº - 16 -</item>
-                        <item>- 1884 -</item>
-                    </media>
-                </publicationStmt>
-                <sourceDesc>
-                   <bibl>Carta 16 do espólio de Camillo Castello Branco, editada por Henrique Arantes (Porto, 2022)</bibl>
-                </sourceDesc>
-            </fileDesc>
-        </teiHeader>
-
+    <text type="letter" n="16" from="Abel Acacio" to="Camilo Castello Branco">
+        <pb n='1' />
         <opener>
-                <choice>
-                    <abbr>Ex.<sup>mo</sup></abbr>
-                    <expan>Excelentíssimo</expan>
-                </choice> mestre e <choice>
-                    <abbr>am.<sup>o</sup></abbr>
-                    <expan>amigo</expan>
-                </choice>
-            <placeName where='Lamengo, Porugal'>Lamego</placeName>
+            <choice>
+                <abbr>Ex.<sup>mo</sup></abbr>
+                <expan>Excelentíssimo</expan>
+            </choice> mestre e <choice>
+                <abbr>am.<sup>o</sup></abbr>
+                <expan>amigo</expan>
+            </choice>
+            <placeName where='Lamengo, Portugal'>Lamego</placeName>
             <date when='1884-06-20'>20/6/84</date>
         </opener>
-
-        <p> Talvez que na verdade. <name>Fialho</name>
+        <p> Talvez que na verdade. <persName>Fialho</persName>
             <lb />Não tivesse intenção de me beliscar;
-            <lb />a minha impressão porém, too acabar
+            <lb />a minha impressão porém, ao acabar
             <lb />De lês-lhe o folhetim, feito de mais a
-            <lb />Mais depois do meu, foi de que elle
+            <lb />mais depois do meu, foi de que elle
             <lb />era uma resposta e um desforço. E
             <lb />porcerto não deixa de entender-se prin<pc force="inter">-</pc>
             <lb />cipalmente comigo aquele epitheto de
@@ -58,43 +56,36 @@
             <lb />do meu appellido embrulhado no <u>con</u>
             <pc force="inter">-</pc>
             <lb /><u>selheiro</u> do <u>primo</u> <u>Bazilio</u>.</p>
-
         <p> Não sou purista; falta-me a
             auctoridade e o estudo. Acudo porêm por
             elles, indiginado</p>
-
-    <pb n='2' style="page-break-after: always; break-after: page;" />
-
+        <pb n='2' style="page-break-after: always; break-after: page;" />
         <p> Fêz-me intensos pruridos de cu<pc force="inter">-</pc>
             <lb />riosidade a sua communicação, respeito
-            <lb />ao tal S. Ignacio da Silva, de quem
+            <lb />ao tal <persName>S. Ignacio da Silva</persName>, de quem
             <lb />nunca li palavra. Vou procurar obter
             <lb />alguma cousa. d'elle, e sobretudo o que a<pc force="inter">-</pc>
             <lb />caso haja que me toque pela porta.</p>
-
         <p> Esta minha carta hoje é par<pc force="inter">-</pc>
             <lb />ticularmente de gratidão pela ines<pc force="inter">-</pc>
             <lb />gotável bonhomia do meu amigo, sem<pc force="inter">-</pc>
             <lb />pre prompto a responder a quem tan<pc force="inter">-</pc>
             <lb />to, e tão repetido, o importuna.</p>
-
         <p> Ao mesmo tempo, quero apres<pc force="inter">-</pc>
             <lb />sar-me a communicar-lhes que, se a<pc force="inter">-</pc>
-            <lb />caso voltar breve ao Porto, se não dê
-            <lb />a canceira ce ir a Mattosinhos para
-    <!-- paragraph continues but page breaks -->
-    <pb n='3' style="page-break-after: always; break-after: page;" />
+            <lb />caso voltar breve ao <placeName where='Porto, Portugal'>Porto</placeName>, se não dê
+            <lb />a canceira ce ir a <placeName where='Matosinhos, Portugal'>Mattosinhos</placeName> para
+            <!-- paragraph continues but page breaks -->
+            <pb n='3' style="page-break-after: always; break-after: page;" />
             <lb />me ver, porque eu retirei d'ali no
             <lb />sabbado, a vir executar os meus traba<pc force="inter">-</pc>
             <lb />lhos de campo oficiaes, tenho anda<pc force="inter">-</pc>
-            <lb />do pelo Vouga, e só para meiado de
+            <lb />do pelo <placeName where='Vouga river, Portugal'>Vouga</placeName>, e só para meiado de
             <lb />agosto voltarei áquella praia, a passar
             <lb />ali à estação balnear.</p>
-
         <p> Mas por então espero, ainda assim,
             <lb />Ter a honra d'uma entrevista com
-            <lb />V-Se.<sup>a</sup>, antes do m eu regresso à capital.</p>
-
+            <lb /><abbr expan="Vossa Senhoria">V-Se.<sup>a</sup></abbr>, antes do m eu regresso à capital.</p>
         <closer>
             <salute>Seu <choice>
                     <abbr>m.<sup>to</sup></abbr>
@@ -107,18 +98,17 @@
             </author>
         </closer>
 
-        <note>
-            <postscript>
-                <p>Neste intervallo
-                    <lb />É-me dirigida a
-                    <lb />correspondencia
-                    <lb />pra Lamengo,
-                    <lb />aonde venho de
-                    <lb />qdo em
-                    <lb />qdo</p>
-            </postscript>
-        </note>
+        <postscript>
+            <p>Neste intervallo
+                <lb />É-me dirigida a
+                <lb />correspondencia
+                <lb />pra Lamengo,
+                <lb />aonde venho de
+                <lb />qdo em
+                <lb />qdo</p>
+        </postscript>
 
-    <pb n='4' style="page-break-after: always; break-after: page;" />
+        <pb n='4' style="page-break-after: always; break-after: page;" />
+    </text>
 
-</div>
+</tei.2>
