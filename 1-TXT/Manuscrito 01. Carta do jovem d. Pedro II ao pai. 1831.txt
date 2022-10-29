@@ -1,0 +1,38 @@
+##########################################
+###  META: Carta de D.Pedro II ao Pai  ###
+###  --------------------------------  ###
+###  Glossário de Notação____________  ###
+###  \n -> quebra de linha             ###
+###  \? -> caracter indeterminado      ###
+###  \ˆ -> terminação superscrita      ###
+###  \> -> espaçamento extra à esq.    ###
+###  \< -> sem espaçamento à esquerda  ###
+##########################################
+
+
+Meu querido Pai meu Senhor
+
+Tendo sempre tido m\ˆtas saudadas de\n
+V. M. J. agora m\ˆtas mais tenho vendo\n
+todos os dias os lugares emq. tinhamos\n
+a felicidade de ver a V. M. J. e de lhe\n
+beijar a mão. Eu vou seguindo os pre-\n
+ceitos q. V M. J. me deixou comprin\?\n
+do os meus deveres, com o desejo de mere\?\n
+cer a precusa amizade de V. M. J.\n
+O meu Tutor tem estado doente mais\n
+vai melhor; Nós todos the temos m\n
+amizade pois elle nos trata como seus\n
+filhos
+\>Beijo com o maior respeito a mão de\n
+V. M. J. e peço a sua paternal benção\n
+q´ receberá como obedencia amor e respeito\n
+este
+\>\>de \?. M. J
+\>\>\>Am\ˆto e Saudoso Filho
+\>\>\>Pedro
+
+\<As m criadas beijés\n
+\<a Angusia Mão de V. M J.
+
+S. Christovão, em 19. de 9\ˆbro. de 1831.
