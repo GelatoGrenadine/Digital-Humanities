@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<tei.2>
+<TEI.2>
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -15,10 +15,12 @@
                 <publisher />
                 <pubPlace />
                 <date />
+                <!--
                 <media type="sticker" class="catalogation">
                     <item>Nº - 16 -</item>
                     <item>- 1884 -</item>
                 </media>
+                -->
             </publicationStmt>
             <sourceDesc>
                 <letDesc status="uni">
@@ -27,13 +29,13 @@
                       <settlement>Vila Nova de Famalicão</settlement>
                       <institution>Casa de Camilo - Museu. Centro de Estudos</institution>
                       <repository>
-
+                        University of Toronto - Robarts Library https://archive.org/details/robarts
                       </repository>
                       <collection>
 
                       </collection>
                       <idno>
-
+                        16
                       </idno>
                    </letIdentifier>
                     <letHeading>
@@ -50,10 +52,10 @@
                        <extent>
                           <dimensions>
                              <height units="mm">
-
+                                <!-- -->
                              </height>
                              <width units="mm">
-
+                                <!-- -->
                              </width>
                           </dimensions>
                        </extent>
@@ -66,25 +68,19 @@
                     </physDesc>
                     <envOcc occ="no" />
                     <letContents>
-
+                        <p>Carta a Camillo em que faz referencia a um folhetim do Fialho, no qual é visado com o epitheto de velho precocissimo, etc. Agradece ao destinatario os favores e attenções que lhe tem dispensado.</p>
                     </letContents>
-                </letDesc>s
+                </letDesc>
             </sourceDesc>
         </fileDesc>
-
     </teiHeader>
-    <body>
-        <text>
+    <text>
+        <body>
             <pb n='1' />
             <opener>
-                <choice>
-                    <abbr>Ex.<sup>mo</sup></abbr>
-                    <expan>Excelentíssimo</expan>
-                </choice> mestre e <choice>
-                    <abbr>am.<sup>o</sup></abbr>
-                    <expan>amigo</expan>
-                </choice>
-                <placeName where='Lamengo, Portugal'>Lamego</placeName>
+                <abbr expan="Exelentíssimo">Ex.mo</abbr>
+                <abbr expan="amigo">am.o</abbr>
+                <placeName><settlement type="city">Lamego</settlement></placeName>
                 <date when='1884-06-20'>20/6/84</date>
             </opener>
             <p>
@@ -105,7 +101,7 @@
                 Não sou purista; falta-me a<lb />
                 auctoridade e o estudo. Acudo porêm por<lb />
                 elles, indiginado</p>
-            <pb n='2' style="page-break-after: always; break-after: page;" />
+            <pb n='2' />
             <p>
                 Fêz-me intensos pruridos de cu<pc force="inter">-</pc><lb />
                 riosidade a sua communicação, respeito<lb />
@@ -122,32 +118,27 @@
             <p>
                 Ao mesmo tempo, quero apres<pc force="inter">-</pc><lb />
                 sar-me a communicar-lhes que, se a<pc force="inter">-</pc><lb />
-                caso voltar breve ao <placeName where='Porto, Portugal'>Porto</placeName>, se não dê<lb />
-                a canceira ce ir a <placeName where='Matosinhos, Portugal'>Mattosinhos</placeName> para
+                caso voltar breve ao <placeName><settlement type="city">Porto</settlement></placeName>, se não dê<lb />
+                a canceira ce ir a <placeName><settlement type="city">Mattosinhos</settlement></placeName> para
                 <!-- paragraph continues but page breaks -->
-                <pb n='3' style="page-break-after: always; break-after: page;" /><lb />
+                <pb n='3' /><lb />
                 me ver, porque eu retirei d'ali no<lb />
                 sabbado, a vir executar os meus traba<pc force="inter">-</pc><lb />
                 lhos de campo oficiaes, tenho anda<pc force="inter">-</pc><lb />
-                do pelo <placeName where='Vouga river, Portugal'>Vouga</placeName>, e só para <date when="1884-08" >meiado de<lb />
+                do pelo <geogName type="river">Vouga</geogName>, e só para <date when="1884-08" >meiado de<lb />
                 agosto</date> voltarei áquella praia, a passar<lb />
                 ali à estação balnear.</p>
             <p>
                 Mas por então espero, ainda assim,<lb />
                 Ter a honra d'uma entrevista com<lb />
-                <abbr expan="Vossa Senhoria">V-Se.<sup>a</sup></abbr>, antes do m eu regresso à capital.</p>
+                <abbr expan="Vossa Senhoria">V-Se.a</abbr>, antes do m eu regresso à capital.</p>
             <closer>
-                <salute>Seu <choice>
-                        <abbr>m.<sup>to</sup></abbr>
-                        <expan>muito</expan>
-                    </choice> dedicado<lb />
+                <salute>Seu <abbr expan="muito">m.to</abbr> dedicado<lb />
                     e admirador
                 </salute>
-                <author>
-                    <signed>Abel Acacio</signed>
-                </author>
+                <signed>Abel Acacio</signed>
             </closer>
-            <postscript>
+            <ps>
                 <p>Neste intervallo<lb />
                     É-me dirigida a<lb />
                     correspondencia<lb />
@@ -155,8 +146,8 @@
                     aonde venho de<lb />
                     qdo em<lb />
                     qdo</p>
-            </postscript>
-            <pb n='4' style="page-break-after: always; break-after: page;" />
-        </text>
-    </body>
-</tei.2>
+            </ps>
+            <pb n='4' />
+        </body>
+    </text>
+</TEI.2>
