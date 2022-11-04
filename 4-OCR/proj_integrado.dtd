@@ -1,0 +1,16 @@
+<!ELEMENT Recorte (Fonte, Titulo, Paginas, Autor, Assunto?, Tipo, Como, Transcricao, Anexo) >
+<!ELEMENT  Fonte EMPTY>
+<!ATTLIST Fonte Nome CDATA  #REQUIRED>
+<!ATTLIST Fonte Data CDATA  #REQUIRED>
+<!ATTLIST Fonte Vol CDATA  #IMPLIED>
+<!ATTLIST Fonte Num CDATA #IMPLIED >
+<!ELEMENT  Titulo (#PCDATA)>
+<!ELEMENT  Autor (#PCDATA)>
+<!ELEMENT  Assunto (#PCDATA)>
+<!ELEMENT  Paginas EMPTY>
+<!ATTLIST Paginas Inic CDATA  #REQUIRED>
+<!ATTLIST Paginas Ult  CDATA  #IMPLIED>
+<!ELEMENT Tipo ("POR" | "SOBRE")
+<!ELEMENT Como ("MANUSCRITO" | "IMPRESSO")
+<!ELEMENT Transcricao (texto)
+<!ELEMENT Anexos ( Anexo* )
