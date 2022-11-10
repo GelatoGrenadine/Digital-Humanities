@@ -46,12 +46,8 @@
                        </support>
                        <extent>
                           <dimensions>
-                             <height units="mm">
-                                <!-- -->
-                             </height>
-                             <width units="mm">
-                                <!-- -->
-                             </width>
+                             <height units="mm">121</height>
+                             <width  units="mm">152</width>
                           </dimensions>
                        </extent>
                        <layout>
