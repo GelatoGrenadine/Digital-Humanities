@@ -28,15 +28,10 @@
                       <country>Portugal</country>
                       <settlement>Vila Nova de Famalicão</settlement>
                       <institution>Casa de Camilo - Museu. Centro de Estudos</institution>
-                      <repository>
-                        University of Toronto - Robarts Library https://archive.org/details/robarts
-                      </repository>
-                      <collection>
-
-                      </collection>
-                      <idno>
-                        16
-                      </idno>
+                      <repository>Arquivo da Correspondência de Camilo
+                        Castelo Branco contido em: MENEZES, José de Azevedo; et al. Camillo Homenageado - Escriptor da Graça e da Belleza. Porto, 1921</repository>
+                      <collection>Citadas em op. cit. pag 5-212</collection>
+                      <idno>Carta 16</idno>
                    </letIdentifier>
                     <letHeading>
                        <author>Abel Acacio</author>
@@ -81,7 +76,7 @@
                 <abbr expan="Exelentíssimo">Ex.mo</abbr>
                 <abbr expan="amigo">am.o</abbr>
                 <placeName><settlement type="city">Lamego</settlement></placeName>
-                <date when='1884-06-20'>20/6/84</date>
+                <dateline when='1884-06-20'>20/6/84</date>
             </opener>
             <p>
                 Talvez que na verdade. <persName type="nickname">Fialho</persName><lb />
