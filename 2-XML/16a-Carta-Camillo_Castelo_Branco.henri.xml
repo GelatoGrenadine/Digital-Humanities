@@ -69,10 +69,10 @@
         <body>
             <pb n='1' />
             <opener>
-                <abbr expan="Exelentíssimo">Ex.mo</abbr>
-                <abbr expan="amigo">am.o</abbr>
+                <abbr expan="Exelentíssimo">Ex.<sup>mo</sup></abbr>
+                <abbr expan="amigo">am.<sup>o</sup></abbr>
                 <placeName><settlement type="city">Lamego</settlement></placeName>
-                <dateline when='1884-06-20'>20/6/84</date>
+                <dateline when='1884-06-20'>20/6/84</dateline>
             </opener>
             <p>
                 Talvez que na verdade. <persName type="nickname">Fialho</persName><lb />
@@ -122,9 +122,9 @@
             <p>
                 Mas por então espero, ainda assim,<lb />
                 Ter a honra d'uma entrevista com<lb />
-                <abbr expan="Vossa Senhoria">V-Se.a</abbr>, antes do m eu regresso à capital.</p>
+                <abbr expan="Vossa Senhoria">V-Se.<sup>a</sup></abbr>, antes do m eu regresso à capital.</p>
             <closer>
-                <salute>Seu <abbr expan="muito">m.to</abbr> dedicado<lb />
+                <salute>Seu <abbr expan="muito">m.<sup>to</sup></abbr> dedicado<lb />
                     e admirador
                 </salute>
                 <signed>Abel Acacio</signed>
