@@ -28,7 +28,7 @@ def desenha_nuvem(input):
 	WordCloud().generate_from_frequencies(input).to_image().show()
 
 def dicionario_para_listas(input):
-	return input.keys(), input.values()
+	return list(input.keys()), list(input.values())
 
 def desenha_grafico_de_barras(input, limite = 10):
   #plt.bar(dicionario_para_listas(input))
