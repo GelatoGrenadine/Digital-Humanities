@@ -2,96 +2,27 @@
 import requests
 import json
 import unidecode
-#import html
-#import urllib
-#import html5lib
-#from bs4 import BeautifulSoup
-#from lxml import etree
 
-#baseurl = "https://www.ipma.pt/pt/otempo/prev.localidade.hora/#"
-
+#http fetch .json file by feeding url
 url = "https://api.ipma.pt/public-data/forecast/locations.json"
-request = requests.get(url).text
-locationsJson = json.loads(request)
+locations = requests.get(url).json()
 
-locations = {loc["globalIdLocal"]: loc for loc in locationsJson}
+def lowerAscii(input):
+	return unidecode.unidecode(input).lower()
 
-LOC = {}
-for localId, localData in locations.items():
-	for key, value in localData.items():
-		if key == "local": LOC[localId] = unidecode.unidecode(value).upper()
-	# for key, value in Idlocal:
- 	# 	if key == "local":
- 	# 		print(value)
-
-def get_key_from_value(d, val):
-    keys = [k for k, v in d.items() if v == val]
-    if keys:
-        return keys[0]
-    return None
-
-
-
-#locations = ["Aveiro","Beja","Braga","Bragança","Castelo Branco",
-#			 "Coimbra","Évora","Faro","Guarda","Leiria","Lisboa",
-#			 "Portalegre","Porto","Santarém","Setúbal",
-#			 "Viana do Castelo","Vila Real","Viseu","Madeira",
-#			 "Porto Santo","Santa Maria","São Miguel","Terceira",
-#			 "Graciosa","São Jorge","Pico","Faial","Flores","Corvo"]
-
-#LOC = list(map(lambda x: x.upper(),locations))
-
-#LOCascii = unidecode.unidecode(LOC)
-#print(LOCascii)
-
+#compare ascii versions of both user input and location list
 while True:
-	userInput = input("Insira uma localidade: ")
-	location = unidecode.unidecode(userInput).upper()
+	location = lowerAscii(input("Insira uma localidade: "))
 	try:
-		idLocal = [k for k, v in LOC.items() if v == location][0]
-		break
-	except IndexError:
+		for loc in locations:
+			if lowerAscii(loc["local"]) == location:
+				idLocal = loc["globalIdLocal"]
+				break
+		#extra break to get out of while loop too
+		if idLocal: break
+	except:
 		print("ERRO: Localidade não econtrada!")
+
 query = "https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/" + str(idLocal) + ".json"
-print(query)
-payload = requests.get(query).text
-forecast = json.loads(payload)
+forecast = requests.get(query).json()
 print(json.dumps(forecast, indent=2))
-
-
-#query = baseurl + location + "&" + location
-
-#print(query)
-
-# request = requests.get(query)
-# soup = BeautifulSoup(request.content, 'html5lib')
-# dom = etree.HTML(str(soup))
-# forecast = dom.xpath('//*[@id="weekly"]')[0].text
-# tMin = dom.xpath('//*[@id="11"]/span[1]')[0].text
-# tMax = dom.xpath('//*[@id="11"]/span[2]')[0].text
-# precipitaProb = dom.xpath('//*[@id="11"]/div[3]')[0].text
-
-# https://api.ipma.pt/public-data/forecast/locations.json
-
-# {
-#     "owner": "IPMA",
-#     "country": "PT",
-#     "data": [
-#         {
-#             "precipitaProb": "40.0",
-#             "tMin": "12.7",
-#             "tMax": "21.5",
-#             "predWindDir": "SE",
-#             "idWeatherType": 7,
-#             "classWindSpeed": 1,
-#             "longitude": "-8.6535",
-#             "forecastDate": "2022-11-10",
-#             "classPrecInt": 1,
-#             "latitude": "40.6413"
-#         }
-#     ],
-#     "globalIdLocal": 1010500,
-#     "dataUpdate": "2022-11-10T23:31:04"
-# }
-
-# https://www.ipma.pt/pt/otempo/prev.localidade.hora/#Lisboa&Lisboa
