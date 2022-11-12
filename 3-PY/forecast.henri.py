@@ -1,48 +1,77 @@
 # -*- coding: utf-8 -*-
-import json
-import html
-import urllib
 import requests
-import html5lib
-from bs4 import BeautifulSoup
-from lxml import etree
+import json
+import unidecode
+#import html
+#import urllib
+#import html5lib
+#from bs4 import BeautifulSoup
+#from lxml import etree
 
-locais = "https://raw.githubusercontent.com/prpm-aulas/fpln-22-23/main/aula-08/previsoes/locais.json"
+#baseurl = "https://www.ipma.pt/pt/otempo/prev.localidade.hora/#"
 
-baseurl = "https://www.ipma.pt/pt/otempo/prev.localidade.hora/#"
+url = "https://api.ipma.pt/public-data/forecast/locations.json"
+request = requests.get(url).text
+locationsJson = json.loads(request)
 
-locations = ["Aveiro","Beja","Braga","Bragança","Castelo Branco",
-			 "Coimbra","Évora","Faro","Guarda","Leiria","Lisboa",
-			 "Portalegre","Porto","Santarém","Setúbal",
-			 "Viana do Castelo","Vila Real","Viseu","Madeira",
-			 "Porto Santo","Santa Maria","São Miguel","Terceira",
-			 "Graciosa","São Jorge","Pico","Faial","Flores","Corvo"]
-LOC = list(map(lambda x: x.upper(),locations))
+locations = {loc["globalIdLocal"]: loc for loc in locationsJson}
+
+LOC = {}
+for localId, localData in locations.items():
+	for key, value in localData.items():
+		if key == "local": LOC[localId] = unidecode.unidecode(value).upper()
+	# for key, value in Idlocal:
+ 	# 	if key == "local":
+ 	# 		print(value)
+
+def get_key_from_value(d, val):
+    keys = [k for k, v in d.items() if v == val]
+    if keys:
+        return keys[0]
+    return None
+
+
+
+#locations = ["Aveiro","Beja","Braga","Bragança","Castelo Branco",
+#			 "Coimbra","Évora","Faro","Guarda","Leiria","Lisboa",
+#			 "Portalegre","Porto","Santarém","Setúbal",
+#			 "Viana do Castelo","Vila Real","Viseu","Madeira",
+#			 "Porto Santo","Santa Maria","São Miguel","Terceira",
+#			 "Graciosa","São Jorge","Pico","Faial","Flores","Corvo"]
+
+#LOC = list(map(lambda x: x.upper(),locations))
+
 #LOCascii = unidecode.unidecode(LOC)
 #print(LOCascii)
 
 while True:
-	location = input("Insira uma localidade: ").upper()
+	userInput = input("Insira uma localidade: ")
+	location = unidecode.unidecode(userInput).upper()
 	try:
-		i = LOC.index(location)
-		location = urllib.parse.quote(locations[i])
+		idLocal = [k for k, v in LOC.items() if v == location][0]
 		break
-	except ValueError:
+	except IndexError:
 		print("ERRO: Localidade não econtrada!")
-
-query = baseurl + location + "&" + location
-
+query = "https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/" + str(idLocal) + ".json"
 print(query)
-
-request = requests.get(query)
-soup = BeautifulSoup(request.content, 'html5lib')
-dom = etree.HTML(str(soup))
-forecast = dom.xpath('//*[@id="weekly"]')[0].text
-tMin = dom.xpath('//*[@id="11"]/span[1]')[0].text
-tMax = dom.xpath('//*[@id="11"]/span[2]')[0].text
-precipitaProb = dom.xpath('//*[@id="11"]/div[3]')[0].text
+payload = requests.get(query).text
+forecast = json.loads(payload)
+print(json.dumps(forecast, indent=2))
 
 
+#query = baseurl + location + "&" + location
+
+#print(query)
+
+# request = requests.get(query)
+# soup = BeautifulSoup(request.content, 'html5lib')
+# dom = etree.HTML(str(soup))
+# forecast = dom.xpath('//*[@id="weekly"]')[0].text
+# tMin = dom.xpath('//*[@id="11"]/span[1]')[0].text
+# tMax = dom.xpath('//*[@id="11"]/span[2]')[0].text
+# precipitaProb = dom.xpath('//*[@id="11"]/div[3]')[0].text
+
+# https://api.ipma.pt/public-data/forecast/locations.json
 
 # {
 #     "owner": "IPMA",
