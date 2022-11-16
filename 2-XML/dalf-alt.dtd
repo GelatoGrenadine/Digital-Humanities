@@ -2995,7 +2995,8 @@
 	| figure | paraph | print | layerStart | layerEnd | note 
 	| seg | anchor | addSpan | delSpan | gap | alt | altGrp 
 	| index | interp | interpGrp | join | joinGrp | link | linkGrp 
-	| timeline | cb | fw | lb | milestone | pb)* >
+	| timeline | cb | fw | lb | milestone | pb
+	| pc | u | persName | geogName)* >
 
 
 <!ATTLIST p 
@@ -3013,6 +3014,14 @@
 	lang IDREF #IMPLIED
 	rend CDATA #IMPLIED
 	TEIform CDATA "p" >
+
+<!ELEMENT pc
+	(#PCDATA)*>
+<!ATTLIST pc
+	force CDATA #IMPLIED
+	TEIform CDATA "p" >
+<!ELEMENT u
+	(#PCDATA)*>
 
 
 <!ELEMENT foreign 
@@ -3399,6 +3408,70 @@
 	type CDATA #IMPLIED
 	TEIform CDATA "name" >
 
+<!ELEMENT persName
+	(#PCDATA | dimensions | abbr | address | date | dateRange
+	| expan | measure | name | num | placeName | rs | time |
+	timeRange | app | corr | damage | del | orig | reg | restore
+	| sic | space | supplied | unclear | formula | handShift
+	| distinct | emph | foreign | gloss | hi | mentioned | soCalled
+	| term | title | ptr | ref | xptr | xref | add | deco |
+	figure | paraph | print | layerStart | layerEnd | note |
+	seg | anchor | addSpan | delSpan | gap | alt | altGrp |
+	index | interp | interpGrp | join | joinGrp | link | linkGrp
+	| timeline | cb | fw | lb | milestone | pb)* >
+
+<!ATTLIST persName
+	corresp IDREFS #IMPLIED
+	synch IDREFS #IMPLIED
+	sameAs IDREF #IMPLIED
+	copyOf IDREF #IMPLIED
+	next IDREF #IMPLIED
+	prev IDREF #IMPLIED
+	exclude IDREFS #IMPLIED
+	select IDREFS #IMPLIED
+	ana IDREFS #IMPLIED
+	id ID #IMPLIED
+	n CDATA #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	key CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "name" >
+
+<!ELEMENT geogName
+	(#PCDATA | dimensions | abbr | address | date | dateRange
+	| expan | measure | name | num | placeName | rs | time |
+	timeRange | app | corr | damage | del | orig | reg | restore
+	| sic | space | supplied | unclear | formula | handShift
+	| distinct | emph | foreign | gloss | hi | mentioned | soCalled
+	| term | title | ptr | ref | xptr | xref | add | deco |
+	figure | paraph | print | layerStart | layerEnd | note |
+	seg | anchor | addSpan | delSpan | gap | alt | altGrp |
+	index | interp | interpGrp | join | joinGrp | link | linkGrp
+	| timeline | cb | fw | lb | milestone | pb)* >
+
+<!ATTLIST geogName
+	corresp IDREFS #IMPLIED
+	synch IDREFS #IMPLIED
+	sameAs IDREF #IMPLIED
+	copyOf IDREF #IMPLIED
+	next IDREF #IMPLIED
+	prev IDREF #IMPLIED
+	exclude IDREFS #IMPLIED
+	select IDREFS #IMPLIED
+	ana IDREFS #IMPLIED
+	id ID #IMPLIED
+	n CDATA #IMPLIED
+	lang IDREF #IMPLIED
+	rend CDATA #IMPLIED
+	key CDATA #IMPLIED
+	reg CDATA #IMPLIED
+	type CDATA #IMPLIED
+	TEIform CDATA "name" >
+
+
+
 
 <!ELEMENT rs 
 	(#PCDATA | dimensions | abbr | address | date | dateRange 
@@ -3528,6 +3601,7 @@
 	calendar CDATA #IMPLIED
 	value CDATA #IMPLIED
 	certainty CDATA #IMPLIED
+	when CDATA #IMPLIED
 	TEIform CDATA "date" >
 
 
@@ -3641,8 +3715,12 @@
 	figure | paraph | print | layerStart | layerEnd | note | 
 	seg | anchor | addSpan | delSpan | gap | alt | altGrp | 
 	index | interp | interpGrp | join | joinGrp | link | linkGrp 
-	| timeline | cb | fw | lb | milestone | pb)* >
+	| timeline | cb | fw | lb | milestone | pb
+	| sup)* >
 
+
+<!ELEMENT sup
+ 	(#PCDATA)* >
 
 <!ATTLIST abbr 
 	corresp IDREFS #IMPLIED
@@ -6331,6 +6409,7 @@
 	n CDATA #IMPLIED
 	lang IDREF #IMPLIED
 	rend CDATA #IMPLIED
+	when CDATA #REQUIRED
 	TEIform CDATA "dateline" >
 
 
