@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tei.2 SYSTEM 'carta16.dtd'>
+<tei.2>
+<teiHeader xml:lang="pt">
+    <fileDesc>
+      <titleStmt>
+        <title>Versão Eletrónica da carta de Abel Acacio para Camilo Castelo Branco</title>
+        <author xml:id="STC">Abel Acacio</author>
+        <editor xml:id="JLL">Raquel Rossi Ferreira</editor>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Universidade do Minho</publisher>
+        <pubPlace>Braga, Portugal</pubPlace>
+        <date>2022</date>
+      </publicationStmt>
+      <sourceDesc>
+         <letDesc>
+            <letIdentifier>
+                <country> Belgica </country>
+                <region> Flanders </region>
+                <settlement> Antwerp </settlement>
+                <institution type="municip_department"> Dept. of Culture, Antwerp </institution> 
+                <idno type="Arquivo das Cartas de Camilo Castelo Branco"> carta 16 </idno> 
+            </letIdentifier>
+            <letHeading>
+                <author attested="yes"> Abel Acacio</author> 
+                <addressee attested="yes"> Camilo Castelo Branco</addressee> 
+                <placeLet attested="yes"> Lamego </placeLet>
+                <dateLet attested="yes"> 20 de Junho de 1884</dateLet>
+            </letHeading>
+            <physDesc>
+                <type> Carta </type>
+                <support><p> Escrito em três páginas</p></support>
+                <layout><p>Escrito em três colunas</p></layout>
+            </physDesc>
+            <envOcc occ="no"/>
+            <letContents>
+                <p> Carta a Camillo em que faz referencia a um folhetim de fialho, 
+                no qual é visado com o epitheto de velho precocissimo.</p>
+                <p> Agradece ao destinatário os favores e atenções que lhe tem dispensado.</p>
+                <note>Resumo – autógrafo assinado</note> 
+            </letContents>
+         </letDesc>
+      </sourceDesc>
+    </fileDesc>    
+</teiHeader>
+        <text>
+            <body>
+                <choice>
+                    <abbr>
+                        Ex.<sup>mo</sup>
+                    </abbr>
+                    <expan>Excelentíssimo</expan>
+                    </choice>mestre e<choice>
+                    <abbr>am.<sup>o</sup></abbr>
+                    <expan>amigo</expan>
+                </choice>
+                <placeName where='Lamengo, Porugal'>Lamego</placeName>
+                <date when='1884-06-20'>20/6/84</date>
+
+                <pb xml:id="p1"/>
+                <p xml:id="Parágrafo 1">
+                    <l>Talvez que na verdade. <q rend="italic"> Fialho</q></l>
+                    <lb/>
+                    <l>não tivesse intenção de me beliscar;</l>
+                    <lb/>
+                    <l>a minha impressão porém, ao acabar</l>
+                    <lb/>
+                    <l>de lêr-lho o folhetim, feito e mais a</l>
+                    <lb/>
+                    <l>mais depois do meu, foi de que elle</l>
+                    <lb/>
+                    <l> era uma resposta e um desforço. E</l>
+                    <lb/>
+                    <l>porcerto não deixa de entendermos prin</l>
+                    <pc force="inter">-</pc>
+                    <lb/>
+                    <l>cipalmente comigo aquele <q rend="italic">epitheto</q> de</l>
+                    <lb/>
+                    <l> <emph rend="underline">velho precocisssimo</emph>, bem como a insidio</l>
+                    <lb/>
+                    <l>do meu appellido embrulhado no <emph rend="underline">con</emph></l>
+                    <pc force="inter">-</pc>
+                    <lb/>
+                    <l> <emph rend="underline">selheiro</emph> do <emph rend="underline">primo <name rendition="#italic">Bazilio</name>
+                    </emph>.</l>
+                </p>
+
+                <p xml:id="Parágrafo 2">
+                    <l>Não sou jurista; falta-me a</l>
+                    <lb/>
+                    <l>autoridade e o estudo. Acudo porêm por </l>
+                    <lb/>
+                    <l>elles, indignado </l>
+                </p>
+
+                <pb xml:id="p2" />
+                <p xml:id="Parágrafo 3">
+                    <l>Fêz-me intensos pruridos de cu<pc force="inter">-</pc></l>
+                    <lb/>
+                    <l>riosidade a sua comunicação , respeito</l>
+                    <lb/>
+                    <l>ao tal 
+                    <abbr>
+                        Sr.
+                    </abbr>
+                    <expan>Senhor</expan> <name rendition="#italic">Ignácio da Silva</name>, de quem</l>
+                    <lb/>
+                    <l>nunca li palavra. Vou procurar obter</l>
+                    <lb/>
+                    <l>alguma cousa  délle , e sobretudo a</l><pc force="inter">-</pc>
+                    <lb/>
+                    <l>caso haja  que me toque pela porta.</l>
+                </p>
+
+                <p xml:id="Parágrafo 4">
+                    <l>Esta minha carta hoje é par<pc force="inter">-</pc></l>
+                    <lb/>
+                    <l>ticularmente de gratidâo pela ines<pc force="inter">-</pc></l>
+                    <lb/>
+                    <l>gotável <foreign xml:lang="es">bonhomia</foreign> do meu amigo, sem<pc force="inter">-</pc></l>
+                    <lb/>
+                    <l>pre prompto a responder a quem tan<pc force="inter">-</pc></l>
+                    <lb/><l>to, e tão repetida, o importuno.</l>
+                </p>
+
+                <p xml:id="Parágrafo 5">
+                    <l>Ao mesmo tempo, quero apres<pc force="inter">-</pc></l>
+                    <lb/>
+                    <l>sarme a comunicarlhes que, se a<pc force="inter">-</pc></l>
+                    <lb/>
+                    <l>caso voltar leve ao<placeName where='Porto, Portugal'></placeName>, se não dê</l>
+                    <lb/>
+                    <l>a canceira de ir a<placeName where='Mattosinhos, Portugal'></placeName> para</l>
+                    <lb/>
+
+                    <pb xml:id="p3"/>
+                    <l>me vêr, porque eu retirei dáli no</l>
+                    <lb/>
+                    <l>sabbado, a vir executar os meus traba<pc force="inter">-</pc></l>
+                    <lb/>
+                    <l>lhos de campo officiaes, tenho anda<pc force="inter">-</pc></l>
+                    <lb/>
+                    <l>do pelo <placeName where='Vouga, Portugal'></placeName>, e só para meiado de</l>
+                    <lb/>
+                    <l>agosto voltarei áquellas praia, a  passar</l>
+                    <lb/>
+                    <l>ali a estação balnear.</l>
+                </p>
+
+                <p xml:id="Parágrafo 6">
+                    <l>Mas por então espero, ainda assim,</l>
+                    <lb/>
+                    <l>ter a honra d'umma entrevista com</l>
+                    <lb/>
+                    <l>V-se, antes do meu regresso á</l>
+                    <lb/>
+                    <l>capital.</l>
+                </p>
+
+                <closer>
+                    <salute>
+                        Seu
+                        <choice>
+                            <abbr>m.<sup>to</sup></abbr>
+                            <expan>muito</expan>
+                        </choice>
+                        dedicado
+                        <lb/>
+                        e admirador
+                    </salute>
+                    <author>
+                        <signed>Abel Acacio</signed>
+                    </author>
+                </closer>
+
+                <note>
+                    <p ixml:id="Parágrafo 7">
+                        <l>N'este intervalo</l>
+                        <lb/>
+                        <l>é-me dirigida a</l>
+                        <lb/>
+                        <l>correspondencia</l>
+                        <lb/>
+                        <l>pra <placeName where='Lamego, Portugal'></placeName>,</l>
+                        <lb/>
+                        <l>onde venho de</l>
+                        <lb/>
+                        <l>qd em qdo.</l>
+                    </p>
+                </note>
+            </body>
+        </text>
+</tei.2>  
+            
