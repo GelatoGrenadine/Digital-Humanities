@@ -1,0 +1,43 @@
+<!ELEMENT tei.2 (teiHeader, text)>
+<!ELEMENT teiHeader (fileDesc)>
+<!ELEMENT fileDesc (titleStmt, publicationStmt, sourceDesc)>
+<!ELEMENT titleStmt (title, author, editor)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT editor (#PCDATA)>
+<!ELEMENT publicationStmt (publisher, pubPlace, date)>
+<!ELEMENT publisher (#PCDATA)>
+<!ELEMENT pubPlace (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT sourceDesc (letDesc)>
+<!ELEMENT letDesc (letIdentifier, letHeading, physDesc, envOcc, letContents)>
+<!ELEMENT letIdentifier (country, region, settlement, institution, idno)>
+<!ELEMENT country (#PCDATA)>
+<!ELEMENT region (#PCDATA)>
+<!ELEMENT settlement (#PCDATA)>
+<!ELEMENT institution (#PCDATA)>
+<!ELEMENT idno (#PCDATA)>
+<!ELEMENT letHeading (author, addressee, placeLet, dateLet)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT addressee (#PCDATA)>
+<!ELEMENT placeLet (#PCDATA)>
+<!ELEMENT dateLet (#PCDATA)>
+<!ELEMENT physDesc (type, support, layout)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT support (#PCDATA)>
+<!ELEMENT layout (#PCDATA)>
+<!ELEMENT envOcc EMPTY>
+<!ATTLIST envOcc occ (yes | no) #REQUIRED>
+<!ELEMENT letContents (p, note)>
+<!ELEMENT p (#CDATA)>
+<!ELEMENT note (#CDATA)>
+<!ELEMENT text (body)>
+<!ELEMENT body (choice, placeName, date, p, closer, note)>
+<!ELEMENT choice (abbr, expan)>
+<!ELEMENT abbr (#CDATA)>
+<!ELEMENT expan (#CDATA)>
+<!ELEMENT placeName (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT p (#PCDATA | q | name | foreign| placeName)*>
+<!ELEMENT closer (#PCDATA | salute | choice | author)*>
+<!ELEMENT note (#PCDATA | p | placeName)*>

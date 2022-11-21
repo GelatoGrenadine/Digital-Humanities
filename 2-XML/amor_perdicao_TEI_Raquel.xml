@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_lite.rng" 
+type="application/xml" 
+schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_lite.rng" 
+type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Edição Digital de Amor de Perdição</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Exercício da Disciplina de Edição Digital</p>        
+         </publicationStmt>
+         <sourceDesc>
+           <bibl>
+              <author>Camillo Castello Branco</author>
+              <editor>Raquel Rossi Ferreira</editor>
+              <edition>Quinta Edição</edition>
+              <date>1879</date>
+              <pubPlace>Porto e Braga</pubPlace>
+              <publisher>livraria Moré</publisher>
+              <cit>
+              <quote>
+               Quem viu jámais vida amorosa, que
+               não a visse afogada nas lagrimas do 
+               desastre ou do arrependimento?
+              </quote>
+              </cit>
+           </bibl>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <div type="dedication">
+         <p> Ao </p>
+         <choice>
+            <abbr>
+               Ex.<sup>mo</sup>
+            </abbr>
+            <expan>Excelentíssimo</expan>
+            <abbr>Snr.</abbr>
+            <expan>Senhor</expan>
+         </choice>
+         <p>Antonio Maria de Fontes Pereira de Mello</p>
+      </div>
+      <div type="preface">
+         <head>Prefácio da Quinta Edição</head>
+         <pb xml:id="p1"/>
+         <p>Publiquei, ha vinte e dois annos, o ro <pc force="inter">-</pc> 
+         mance <emph rend="italic">Onde está a felicidade? </emph> — Pouco depois, 
+         <name rendition="#italic">Alexandre Herculano </name>, republicando as <emph rend="italic"> Lendas 
+         e Narrativas</emph>, escrevia na <emph rend="italic">Advertencia</emph>: N'es <pc force="inter">-</pc>
+         tes quinze ou vinte annos, creou-se uma litte  <pc force="inter">-</pc>
+         ratura, e pode dizer-se que não ha anno que 
+         não lhe traga um progresso. Desde as <emph rend="italic">Lendas,
+         e Narrativas</emph> até o livro <emph rend="italic">Onde está a felicida
+         - de?</emph> que vasto espaço transposto?»</p>
+         <p>Se comparo o <emph rend="italic">Amor de perdição</emph>, cuja 5.ª 
+         edição me parece um exilo phenomenal e extra  <pc force="inter">-</pc>
+         <pb xml:id="p2"/>
+         lusitano, com <emph rend="italic">O Crime do padre Amaro</emph> e <emph rend="italic">O 
+         primo Basilio</emph>, confesso, voluntariamente resi  <pc force="inter">-</pc> 
+         gnado, que para o esplendor d'esles dois livros 
+         foi preciso que a Arte se ataviasse dos primo  <pc force="inter">-</pc>
+         res lavrados no transcurso de dezeseis annos. 
+         <emph rend="italic">O Amor de perdição</emph>, visto á luz electrica do 
+         criticismo moderno, é um romance romântico, 
+         declamatório, com bastantes aleijões lyricos, 
+         e umas ideias sceleradas que chegam a tocar no
+         desafôro do sentimentalismo. Eu não cessarei 
+         de dizer mal desta novella, que tem a boçal 
+         innocencia de não devassar alcôvas, a fim de 
+         que as senhoras a possam lêr nas salas, em 
+         presença de suas filhas ou de suas mães, e 
+         não precisem de esconder-se com o livro no 
+         seu quarto de banho. Dizem, porém, que o 
+         <emph rend="italic">Amor de perdição </emph> fez chorar. Mau foi isso. Mas 
+         agora, como indemnisação, faz rir: tornou-se 
+         comico pela seriedade antiga, pelo raposinho 
+         que lhe deixou o ranço das velhas historias do
+         Trancoso e do padre <name rendition="#italic">Theodoro d'Almeida'</name>.</p>
+         <pb xml:id="p3"/>
+         <p>E por isso mesmo se reimprime, O bom 
+         senso publico relê isto, compara com aquillo, 
+         e vinga-se barrufando com frouxos de riso rea  <pc force="inter">-</pc> 
+         lista as paginas que lia dez annos aljofarava 
+         com lagrimas romanticas.</p>
+         <p>Faz-me tristeza pensar eu que floreci n'es  <pc force="inter">-</pc>
+         ta futilidade da novella quando as dores da 
+         alma podiam ser descriptas sem grande desaire 
+         da grammatica e da decencia. Usava-se então 
+         a rhetorica de preferencia ao calão. O escri  <pc force="inter">-</pc> 
+         ptor anlepunha a frequencia de Quintiliano 
+         á do <emph rend="italic">Collête-encarnado</emph>. A gente imaginava que 
+         os alcouces não abriam gabinetes de leitura e 
+         artes correlativas. Ai! quem me dera ler antes 
+         desabrochado hoje com os punhos arregaçados 
+         para espremer o pús de muitas escrófulas á 
+         face do leitor! N'aquelle tempo, enflorava-se a 
+         pústula; agora, a carne com vareja pendura  <pc force="inter">-</pc> 
+         se na escápula e vende-se bem, porque mui  <pc force="inter">-</pc>
+         ta gente não desgosta de se narcisar n'um es  <pc force="inter">-</pc>
+         pelho fiel.</p>
+         <pb xml:id="p4"/>
+         </p>Pois que estou a dobrar o cabo tormento  <pc force="inter">-</pc>
+         rio da morte, já não verei onde vai desaguar 
+         este enchurro, que rola no bôjo a Ideia Novís  <pc force="inter">-</pc>
+         sima. Como a honestidade é a alma da vida 
+         civil, e o decoro é o nó dos liames que atam 
+         a sociedade, lembra-me se vergonha e socieda  <pc force="inter">-</pc> 
+         de ruirão ao mesmo tempo por efleito de uma
+         grande evolução rigolboche. A lógica diz isto; 
+         mas a Providencia, que usa mais da metaphy  <pc force="inter">-</pc>
+         sica que da lógica, provavelmente fará outra 
+         coisa. Se, por virtude da metempsycose, eu 
+         reapparecer na sociedade do século xxi, talvez
+         me regosije de ver outra vez as lagrimas em 
+         moda nos braços da rhetorica, e esta 5.ª edi  <pc force="inter">-</pc>
+         ção do <emph rend="italic">Amor de perdição</emph> quasi esgotada.</p>
+         <dateline>
+            <placeName>S. Miguel de Seide,</placeName>
+            <date when="1879-02-08">8 de Fevereiro de 1879.</date>
+         </dateline>
+         <signed>Camillo Castello Branco</signed>
+      </div>
+      <div type="abstract">
+         <head>Introdução</head>
+         <pb xml:id="p1"/>
+         <p> Folheando os livros de antigos assentamentos, 
+         no cartorio das cadêas da Relação do <placeName where='Porto, Portugal'></placeName>, li, 
+         no das entradas dos presos desde 1803 a 1805, a 
+         folhas 232, o seguinte:</p>
+         <p><name rendition="#italic">Simão Antonio Botelho</name>, que assim disse cha <pc force="inter">-</pc> 
+         inar-se, ser solteiro, e estudante na Universidade 
+         de <placeName where='Coimbra, Portugal'></placeName>, natural da cidade de <placeName where='Lisboa, Portugal'></placeName>, e assis <pc force="inter">-</pc>  
+         tente na occasião de sua prizão na cidade de <placeName where='Vizeu, Portugal'></placeName>, 
+         idade de dezoito annos, filho de <name rendition="#italic">Domingos 
+         José Corrêa Botelho</name> e de <name rendition="#italic">D. Rita Preciosa Caldei <pc force="inter">-</pc> 
+         rão Castello Branco </name>; estatura ordinaria, cara re <pc force="inter">-</pc> 
+         donda, olhos castanhos, cabello e barba preta, ves <pc force="inter">-</pc> 
+         <pb xml:id="p2"/>
+         tido com jaqueta de baetão azul, colléte de fustão 
+         pintado e calça de panno pedrez. E fiz este assen <pc force="inter">-</pc> 
+         to, que assignei=<name rendition="#italic">Filippe Moreira Dias.</name> </p>
+         <quote>
+         <p>Á margem esquerda d'este assento está escri <pc force="inter">-</pc>  
+         pto:</p>
+         <p>Foi para a <placeName where='Índia'></placeName> em <date when='1807-03-17'>17 de Março de 1807</date>.</p>
+         </quote>
+         <p>Não seria fiar demasiadamente na sensibilida <pc force="inter">-</pc> 
+         de do leitor, se cuido que o degredo de um moço 
+         de dezoito annos lhe lia de fazer dó.</p>
+         <p>Dezoito annos! O arrebol dourado e escarlate 
+         da manhan da vida! As louçanias do coração que 
+         ainda não sonlia em fructos, e todo se embalsama 
+         no perfumo das flores! Dezoito annos! O amor
+         d'aquella idade! A passagem do seio da familia, 
+         dos braços de mãe, dos beijos das irmans para 
+         as caricias mais doces da virgem, que se lhe abre 
+         ao lado como flòr da mesma sazão e dos mesmos 
+         aromas, e ã mesma hora da vida! Dezoito an <pc force="inter">-</pc> 
+         nos!...E degredado da patria,do amor e da fa <pc force="inter">-</pc> 
+         milia! Nunca mais o ceo de <placeName where='Portugal'></placeName>, nem liber <pc force="inter">-</pc> 
+         dade, nem irmãos, nem mãe, nem rehabilitação, 
+         nem dignidade, nem um amigo!... É triste!<p>
+         <p>O leitor de certo se compungia; e a leitora,
+         <pb xml:id="p3"/>
+         se lhe dissessem em menos de uma linha a histo <pc force="inter">-</pc> 
+         ria d'aquelles dezoito annos, choraria!</p>
+         <p>Amou, perdeu-se, e morreu amando.</p>
+         <p>É a historia. E historia assim poderá ou <pc force="inter">-</pc> 
+         vil-a a olhos enxutos a mulher, a creatura mais 
+         bem formada das branduras da piedade, a que 
+         por vezes traz comsigo do ceu um reflexo da di <pc force="inter">-</pc> 
+         vina misericórdia; essa, a minha leitora, a cari <pc force="inter">-</pc> 
+         nhosa amiga de todos os infelizes, não choraria 
+         se lhe dissessem que o pobre moço perdera honra, 
+         rehabilitação, patria, liberdade, irmans, mãe vida, 
+         tudo, por amor da primeira mulher que o des <pc force="inter">-</pc> 
+         pertou do seu dormir de innocentes desejos?!</p>
+         <p>Chorava, chorava! Assim eu lhe soubesse di <pc force="inter">-</pc> 
+         zer o doloroso sobresalto que me causaram aquel <pc force="inter">-</pc> 
+         las linhas, de proposito procuradas, e lidas com 
+         amargura e respeito e, ao mesmo tempo, odio. 
+         Odio, sim... A tempo verão se é perdoável o 
+         odio, ou se antes me não fòra melhor abrir mão 
+         desde já de uma historia que me pôde acarear 
+         enojos dos frios julgadores do coração, e das sen <pc force="inter">-</pc> 
+         tenças que eu aqui lavrar contra a falsa virtude 
+         de homens, feitos barbaros, em nome de sua 
+         honra.</p>
+      </div>
+    </front>
+  </text>
+</TEI>
