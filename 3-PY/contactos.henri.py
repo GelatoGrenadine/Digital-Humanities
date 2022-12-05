@@ -1,6 +1,8 @@
 import uuid, sys, json
 
-argList = ["ajuda", "adicionar", "lista", "editar", "apagar", "pesquisar"]
+argList = ["ajuda", "adicionar", "lista", "editar", "apagar", "pesquisar", 
+		   "exportar", "importar"]
+lineUp = '\033[1A'
 
 def openContactos():
 	while True:
@@ -18,24 +20,41 @@ def openContactos():
 def contactHandler(id=''):
 	#variable initiations
 	c = {}; c['name'] = (); c['phone'] = []; c['email'] = []; c['note'] = ""
-	fName = input("Insira o PRIMEIRO nome do contacto : ")
-	lName = input("Insira o ÚLTIMO nome do contacto   : ")
+	while True:	
+		fName = input("\nInsira o PRIMEIRO nome do contacto : ")
+		lName = input("Insira o ÚLTIMO nome do contacto   : ")
+		if fName == '' and lName == '': continue
+		else: break
+
 	c['name'] = (lName, fName)
 	while True:
-		tNum  = input("Insira o NÚMERO de telefone        : ")
-		if tNum == '': break
-		tLbl  = input("\tAtrelar ID ao telefone ?\n\t[Enter] acaso não quiser   : ")
+		tNum  = input("\nInsira um NÚMERO de telefone       :  \n"
+					+ "\t[Enter] acaso não quiser     \033[1A")
+		if tNum == '': 
+			print('\033[1A\x1b[2K\033[1A\x1b[2K', end='') #clean 2 above lines
+			if len(c['phone']) != 0: break
+			else: continue
+		tLbl  = input("\tAtrelar RÓTULO ao número ? : \n"
+					+ "\t[Enter] acaso não quiser     \033[1A")
+		if tLbl == '': print('\x1b[2K', end='')
 		numb = (tNum, tLbl)
 		c['phone'].append(numb)
-	
+	print()
 	while True:
-		mail  = input("Atrelar um EMAIL ao contacto ?\n\t[Enter] acaso não quiser   : ")
-		if mail == '': break
-		mLbl  = input("\tAtrelar um ID ao email ?\n\t[Enter] acaso não quiser   : ") if mail != '' else ''
+		mail  = input("Atrelar um EMAIL ao contacto ?     : \n"
+					+ "\t[Enter] acaso não quiser     \033[1A")
+		if mail == '': 
+			print('\033[1A\x1b[2K\033[1A\x1b[2K', end='') #clean 2 above lines
+			mLbl = ''
+			break
+		else:  
+			mLbl = input("\tAtrelar RÓTULO ao email ?  : \n"
+					+ "\t[Enter] acaso não quiser     \033[1A")
 		email = (mail, mLbl)
 		c['email'].append(email)            
     
-	c['note'] = input("Adicionar ANOTAÇÃO ao contacto?\n\t[Enter] acaso não quiser   : ")
+	c['note'] = input("\nAdicionar ANOTAÇÃO ao contacto ?   : \n"
+					+ "\t[Enter] acaso não quiser   : \033[1A")
     
 	id = str(uuid.uuid4())[0:4] if id == '' else id
 	c['id'] = id
@@ -65,14 +84,14 @@ def listContacts(contactos):
 			else: print(
 	f"     |                          Tel: {tel[0]:>12}", end='')
 		for i,mail in enumerate(c['email']): 
-			if mail[1] != '': 
+			if mail[0] != '': 
 				print(
-	f"\n     |{mail[1]:>22} eMail: {mail[0]:>12}", end='')
+	f"\n     |{mail[1]:>22} eMail: {mail[0]:<12}", end='')
 		if 0 < len(c['note']) <32: print(
 	f"\n     |                        Nota: {c['note']:<22}", end='')
 		elif len(c['note']) > 32:  
 			lNote = len(c['note'])
-			parts = int(lNote/32)+1 if lNote%32 else lNote/32
+			parts = int(lNote/32)+1 if not lNote%32 else lNote/32
 
 			for part in range(parts):
 				if part == 0: print(
@@ -87,6 +106,19 @@ def listContacts(contactos):
 	
 	#print(f"{token_text:<12}{token_pos:<10}{token_dep:<10}")
 
+def yamlHandler():
+	head = 'contactos'
+	body = ''
+	for c in contactos:
+		conta = f"\n\n\t- id: {c['id']}\n\t  nome: {c['name'][1]} {c['name'][0]}\n\t  números:\n"
+		tels =  "\t\t"+"\n\t\t".join(['-{}{} {}'.format(tel[1],':' if tel[1] != '' else '' ,tel[0]) for tel in c['phone']])
+		mails = "" if len(c['email']) == 0 else "\n\t  emails:\n\t\t"+"\n\t\t".join(['-{}{} {}'.format(mail[1],':' if mail[1] != '' else '' ,mail[0]) for mail in c['email']])
+		nota = "" if len(c['note']) == 0 else "\n\t  nota: "+ c['note']
+		contact = conta+tels+mails+nota
+		body += contact
+		#print(conta+"\t\t"+tels+"\t\t"+mails+nota+"\n")
+	return head+body
+
 n_args = len(sys.argv[1:])
 if n_args == 1:
 	if sys.argv[1] in argList[:3]:
@@ -97,14 +129,19 @@ if n_args == 1:
 			'  Comandos:\n',
 			'    ajuda                 Exibe esta tela de ajuda\n',
 			'    adicionar             Adiciona um novo contacto\n',
-			'    lista                 Apresenta a lista total de ',
-									  'contactos por ordem alfabética\n',
-			'    editar [id]           Edita o contacto com o', 
-									  'identificador [id]\n',
-			'    apagar [id]           Elimina o contacto com o',
-									  'identificador [id]\n',
-			'    pesquisar [padrao]    Apresenta os resultados da ',
-									  'procura por [padrao] na lista')
+			'    lista                 Apresenta a lista alfabética dos',
+						  'contactos\n',
+			'    editar    [id]        Edita o contacto com o', 
+						  'identificador [id]\n',
+			'    apagar    [id]        Elimina o contacto com o',
+						  'identificador [id]\n',
+			'    pesquisar [padrao]    Lista resultados da busca',
+						  'por [padrao]\n',
+			'    exportar  [formato]   Salva em formato [JSON],',
+						  '[YAML]\n',
+			'    importar  [ficheiro]  Importa de ficheiro formatado',
+						  'em vCardV4')
+			
 		
 		else: contactos = openContactos()
 
@@ -139,6 +176,23 @@ elif n_args == 2:
 		if len(ids) > 0: listContacts(ids)
 		else: print("ERRO: Termo de busca não encontrado!")
 		exit()
+
+	if 'exportar' == cmd:
+		if arg.lower() == 'json':
+			print(json.dumps(contactos, indent=2))
+			with open('./exportado.json', 'w') as json_e:
+				json_e.write(json.dumps(contactos))
+		elif arg.lower() == 'yaml':
+			print(yamlHandler())
+			with open('./exportado.yaml', 'w') as yaml_e:
+				yaml_e.write(yamlHandler())
+		exit()
+	
+	if 'importar' == cmd:
+		print("implementação futura")
+		if False:
+			with open(arg, 'w') as vCard_i:
+				vCard = vCard_i.read()
 
 	if len(arg) != 4:  print("ERRO: Id tem 4 caracteres"); exit()
 	
