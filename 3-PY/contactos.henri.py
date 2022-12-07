@@ -1,20 +1,64 @@
-import uuid, sys, json
+import uuid, sys, json, os
 
 argList = ["ajuda", "adicionar", "lista", "editar", "apagar", "pesquisar", 
 		   "exportar", "importar"]
 lineUp = '\033[1A'
 
-def openContactos():
+def idInList(id,contactos):
+	for contact in contactos:
+		if contact['id'] == id: return True
+	return False
+
+def importHandler(ficheiro_vcf):
+	"""currently importable items ['N:','TEL','EMAIL','NOTE:','UID:']"""
 	while True:
 		try: 
-			with open('./sources/contactos.json', 'r') as file:
-				contactos = json.loads(file.read())
-			break
+			with open(ficheiro_vcf, 'r') as file:
+				c,c['name'],c['phone'],c['email'],c['note']={},(),[],[],""
+				for l,line in enumerate(file):#, start=l):
+					if line.find('BEGIN:VCARD') == 0: 
+						print('contacto ', end='')
+					elif line.find('N:') == 0: 
+						c['name'] = tuple(line[2:].split(sep=';')[:2])
+					elif line.find('TEL') == 0: 
+						tNum = line.split(sep=';type=')[-1].split(sep=":")[-1][:-1]
+						tLbl = line.split(sep=';type=')[1].split(sep=":")[0]
+						numb = (tNum,tLbl)
+						c['phone'].append(numb)
+					elif line.find('EMAIL') == 0: 
+						mail = line.split(sep=';type=')[-1].split(sep=":")[-1][:-1]
+						mLbl = line.split(sep=';type=')[2].split(sep=":")[0]
+						email = (mail,mLbl)
+						c['email'].append(email)
+					elif line.find('NOTE:') == 0:
+						c['note'] = line[5:-1]
+					elif line.find('UID:') == 0: 
+						c['id'] = line[4:8]
+						print('id ['+c['id']+']:',c['name'][1],c['name'][0], end='')
+					elif line.find('END:VCARD') == 0: 
+						known = idInList(c['id'],contactos)
+						if not known: 
+							contactos.append(c)
+							print('irá ser adicionado')
+						else: print('\trecusado, já na lista')
+						c,c['name'],c['phone'],c['email']={},(),[],[]
+						c['note']=""
+				break
 		except :
-			if 'adicionar' == cmd: 
-				print("Nenhum arquivo de contactos encontrado, criando um novo."); 
-				contactos = []; break
-			else: print("ERRO: Nenhum arquivo de contactos encontrado."); exit()
+			print("ERRO: Arquivo de contactos não pôde ser importado."); exit()
+
+def openContactos():
+	try: 
+		with open('./sources/contactos.json', 'r') as file:
+			contactos = json.loads(file.read())
+	except :
+		if 'adicionar' == cmd: 
+			print("Nenhum arquivo de contactos encontrado, criando um novo."); 
+			contactos = []
+		if 'importar' == cmd: 
+			print("Nenhum arquivo de contactos encontrado, criando um novo."); 
+			contactos = []
+		else: print("ERRO: Nenhum arquivo de contactos encontrado."); exit()
 	return contactos
 
 def contactHandler(id=''):
@@ -103,10 +147,8 @@ def listContacts(contactos):
 	f"      {c['note'][s:f]:<22}", end='')
 		print(
 	'\n-----|----------------------------:---------------------------------|')
-	
-	#print(f"{token_text:<12}{token_pos:<10}{token_dep:<10}")
 
-def yamlHandler():
+def yamlHandler(contactos):
 	head = 'contactos'
 	body = ''
 	for c in contactos:
@@ -116,8 +158,24 @@ def yamlHandler():
 		nota = "" if len(c['note']) == 0 else "\n\t  nota: "+ c['note']
 		contact = conta+tels+mails+nota
 		body += contact
-		#print(conta+"\t\t"+tels+"\t\t"+mails+nota+"\n")
+
 	return head+body
+
+def vCardHandler(contactos):
+	''''Proof of concept, early beta stage'''
+	#implement loops to catch all phones & emails
+	# for c in contactos:
+	c = contactos[0]
+	head = 'BEGIN:VCARD\r\nVERSION:4.0\r\nPRODID:dHumanity\r\nN:'
+	name = f'{c["name"][0]};{c["name"][1]}\r\nFN:{c["name"][1]} {c["name"][0]}\r\n'
+	email = f'EMAIL;type=INTERNET;type={c["email"][0][1]};type=pref:{c["email"][0][0]}\r\n'
+	tels = f'TEL;type={c["phone"][0][1]};type=VOICE;type=pref:{c["phone"][0][0]}\r\n'
+	uid = f'UID:{c["id"]}\r\n'
+	end = f'END:VCARD\r\n'
+	vCard = head+name+email+tels+uid+end
+	#print(c, '\n')
+
+	return vCard
 
 n_args = len(sys.argv[1:])
 if n_args == 1:
@@ -149,10 +207,17 @@ if n_args == 1:
 
 			newContact = contactHandler()
 			contactos.append(newContact)
+
+			try:
+				with open('./sources', 'r') as folder:
+					folder.read()
+			except FileNotFoundError: os.mkdir('sources')
+			except IsADirectoryError: pass
+			except: print('ERRO: diretório')
 			
 			with open('./sources/contactos.json', 'w') as file:
 				file.write(json.dumps(contactos))
-		
+			
 		if 'lista' == cmd: listContacts(contactos)
 
 	else: print("ERRO[#argList] Comando inválido! Para ajuda use:\n",
@@ -183,16 +248,22 @@ elif n_args == 2:
 			with open('./exportado.json', 'w') as json_e:
 				json_e.write(json.dumps(contactos))
 		elif arg.lower() == 'yaml':
-			print(yamlHandler())
+			print(yamlHandler(contactos))
 			with open('./exportado.yaml', 'w') as yaml_e:
-				yaml_e.write(yamlHandler())
+				yaml_e.write(yamlHandler(contactos))
+		elif arg.lower() == 'vcard':
+			print()
+			print(vCardHandler(contactos), end='')
+			with open('./exportado.vcf', 'w') as vCard:
+				vCard.write(vCardHandler(contactos))
 		exit()
 	
 	if 'importar' == cmd:
-		print("implementação futura")
-		if False:
-			with open(arg, 'w') as vCard_i:
-				vCard = vCard_i.read()
+		vCardPath = arg
+		importHandler(vCardPath)
+		with open('./sources/contactos.json', 'w') as file:
+				file.write(json.dumps(contactos))
+		exit()
 
 	if len(arg) != 4:  print("ERRO: Id tem 4 caracteres"); exit()
 	
