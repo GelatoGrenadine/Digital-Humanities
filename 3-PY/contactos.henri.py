@@ -69,7 +69,7 @@ def openContactos():
 		if 'adicionar' == cmd: 
 			print("Nenhum arquivo de contactos encontrado, criando um novo."); 
 			contactos = []
-		if 'importar' == cmd: 
+		elif 'importar' == cmd: 
 			print("Nenhum arquivo de contactos encontrado, criando um novo."); 
 			contactos = []
 		else: print("ERRO: Nenhum arquivo de contactos encontrado."); exit()
