@@ -1,16 +1,26 @@
-import uuid, sys, json, os
+"""imports
+	@os 	to make sources directory, if none exists os.mkdir('sources')
+	@sys	to take in command line arguments
+	@json	to handle dictionaries & exporting
+	@uuid	to atribure unique id, truncated to size 4"""
+import os, sys, json, uuid
 
-argList = ["ajuda", "adicionar", "lista", "editar", "apagar", "pesquisar", 
-		   "exportar", "importar"]
-lineUp = '\033[1A'
+"""argList	to restrain possible input"""
+argList = ["ajuda", "adicionar", "lista", 
+		   "editar", "apagar", "pesquisar", "exportar", "importar"]
+
+"""lineUp, lineClear   to mark usage in pretty printing on the command line"""
+lineUp, lineClear = '\033[1A','\x1b[2K'
 
 def idInList(id,contactos):
+	"""Checks if coontact with [id] is already in the contact list"""
 	for contact in contactos:
 		if contact['id'] == id: return True
 	return False
 
 def importHandler(ficheiro_vcf):
-	"""currently importable items ['N:','TEL','EMAIL','NOTE:','UID:']"""
+	"""vCard v3 & v4 file.vcf import function
+		currently importable items ['N:','TEL','EMAIL','NOTE:','UID:']"""
 	while True:
 		try: 
 			with open(ficheiro_vcf, 'r') as file:
@@ -48,6 +58,10 @@ def importHandler(ficheiro_vcf):
 			print("ERRO: Arquivo de contactos não pôde ser importado."); exit()
 
 def openContactos():
+	"""open/create contact list function:
+		it allways try to open, 
+		but if unsuccessful AND command is either add OR import, 
+		creates a new one"""
 	try: 
 		with open('./sources/contactos.json', 'r') as file:
 			contactos = json.loads(file.read())
@@ -62,7 +76,7 @@ def openContactos():
 	return contactos
 
 def contactHandler(id=''):
-	#variable initiations
+	"""Let user input for creating/editing a single contact"""
 	c = {}; c['name'] = (); c['phone'] = []; c['email'] = []; c['note'] = ""
 	while True:	
 		fName = input("\nInsira o PRIMEIRO nome do contacto : ")
@@ -106,6 +120,7 @@ def contactHandler(id=''):
 	return c	
 
 def listContacts(contactos):
+	"""Displays a sorted list of all contacts"""
 	sContactos = sorted(contactos, key=lambda d : d['name'][0])
 	print( 
 	f'\n'
@@ -149,6 +164,7 @@ def listContacts(contactos):
 	'\n-----|----------------------------:---------------------------------|')
 
 def yamlHandler(contactos):
+	"""Handle YAML export"""
 	head = 'contactos'
 	body = ''
 	for c in contactos:
@@ -162,27 +178,35 @@ def yamlHandler(contactos):
 	return head+body
 
 def vCardHandler(contactos):
-	''''Proof of concept, early beta stage'''
+	"""vCard Export Handler 
+		- in beta stage"""
 	#implement loops to catch all phones & emails
-	# for c in contactos:
-	c = contactos[0]
-	head = 'BEGIN:VCARD\r\nVERSION:4.0\r\nPRODID:dHumanity\r\nN:'
-	name = f'{c["name"][0]};{c["name"][1]}\r\nFN:{c["name"][1]} {c["name"][0]}\r\n'
-	email = f'EMAIL;type=INTERNET;type={c["email"][0][1]};type=pref:{c["email"][0][0]}\r\n'
-	tels = f'TEL;type={c["phone"][0][1]};type=VOICE;type=pref:{c["phone"][0][0]}\r\n'
-	uid = f'UID:{c["id"]}\r\n'
-	end = f'END:VCARD\r\n'
-	vCard = head+name+email+tels+uid+end
-	#print(c, '\n')
+	vCards = ''
+	for c in contactos:
+		head = 'BEGIN:VCARD\r\nVERSION:4.0\r\nPRODID:dHumanity\r\nN:'
+		name = f'{c["name"][0]};{c["name"][1]}\r\nFN:{c["name"][1]} {c["name"][0]}\r\n'
+		for e in c["email"]:
+			email = f'EMAIL;type=INTERNET;type={e[1]};type=pref:{e[0]}\r\n'
+		for tel in c["phone"]:
+			tels = f'TEL;type={tel[1]};type=VOICE;type=pref:{tel[0]}\r\n'
+		note = '' if c["note"] == '' else f'NOTE:{c["note"]}\r\n'
+		uid = f'UID:{c["id"]}\r\n'
+		end = f'END:VCARD\r\n\r\n'
+		vCard = head+name+email+tels+note+uid+end
+		head,name,email,tels,note,uid,end = '','','','','','',''
+		vCards += vCard
 
-	return vCard
+	return vCards
 
 n_args = len(sys.argv[1:])
 if n_args == 1:
 	if sys.argv[1] in argList[:3]:
+		"""Options if given a single argument within the argList"""
 		cmd = sys.argv[1]
 
-		if 'ajuda' == cmd: print('Utilização:\n', 
+		if 'ajuda' == cmd: 
+			"""Displays help info & quit program"""
+			print('Utilização:\n', 
 			'  python3 contactos.py [comando] [argumentos...]\n', '\n',
 			'  Comandos:\n',
 			'    ajuda                 Exibe esta tela de ajuda\n',
@@ -198,16 +222,18 @@ if n_args == 1:
 			'    exportar  [formato]   Salva em formato [JSON],',
 						  '[YAML]\n',
 			'    importar  [ficheiro]  Importa de ficheiro formatado',
-						  'em vCardV4')
+						  'em vCardV4'); exit()
 			
 		
-		else: contactos = openContactos()
-
+		else: contactos = openContactos(); """if not --help, 
+												summon contact list"""
+		
 		if 'adicionar' == cmd:
-
+			"""Instantiate a new contact, then append to contact list"""
 			newContact = contactHandler()
 			contactos.append(newContact)
-
+			
+			"""Assure there's a sources folder then writes to file"""
 			try:
 				with open('./sources', 'r') as folder:
 					folder.read()
@@ -218,12 +244,14 @@ if n_args == 1:
 			with open('./sources/contactos.json', 'w') as file:
 				file.write(json.dumps(contactos))
 			
-		if 'lista' == cmd: listContacts(contactos)
+		if 'lista' == cmd: listContacts(contactos); """Display sorted 
+												 		contact list"""
 
 	else: print("ERRO[#argList] Comando inválido! Para ajuda use:\n",
 				"python3 contactos.py ajuda. "); exit()
 
 elif n_args == 2:
+	"""Options if given two argument within the argList"""
 	if sys.argv[1] not in argList[3:]: 
 		print("ERRO[#argList] Comando inválido! Para ajuda use:\n",
 			  "python3 contactos.py ajuda. "); exit()
@@ -231,9 +259,11 @@ elif n_args == 2:
 	cmd = sys.argv[1]
 	arg = sys.argv[2]
 
+	"""summon contact list"""
 	contactos = openContactos()
 
 	if 'pesquisar' == cmd:
+		"""query contact name fields in contact list"""
 		ids = []
 		for c in contactos: 
 			if c['name'][0].find(arg) > -1 or c['name'][1].find(arg) >  -1:
@@ -243,6 +273,7 @@ elif n_args == 2:
 		exit()
 
 	if 'exportar' == cmd:
+		"""exports to select formats"""
 		if arg.lower() == 'json':
 			print(json.dumps(contactos, indent=2))
 			with open('./exportado.json', 'w') as json_e:
@@ -253,39 +284,44 @@ elif n_args == 2:
 				yaml_e.write(yamlHandler(contactos))
 		elif arg.lower() == 'vcard':
 			print()
-			print(vCardHandler(contactos), end='')
 			with open('./exportado.vcf', 'w') as vCard:
 				vCard.write(vCardHandler(contactos))
+		else: print("ERRO: Formatos possíveis JSON | YAML | vCard")
 		exit()
 	
 	if 'importar' == cmd:
+		"""import contact(s) in vCard [contacts.vcf]"""
 		vCardPath = arg
 		importHandler(vCardPath)
 		with open('./sources/contactos.json', 'w') as file:
 				file.write(json.dumps(contactos))
 		exit()
 
+	"""Beginning of commands that take in a provided id"""
 	if len(arg) != 4:  print("ERRO: Id tem 4 caracteres"); exit()
 	
+	"""Queries for contact with given id, or return '' """
 	contact = ''
 	for i, c in enumerate(contactos):
 		if c['id'].find(arg) > -1: contact = i; break
-
 	if contact == '': print("ERRO: ID não encontrado!"); exit()
 	else: id = arg 
 		
 	if 'editar' == cmd:
+		"""Handle edit capabilities"""
 		print("Deseja EDITAR o contacto de: ", contactos[contact]['name'],"?")
 		choice = input("Sim ou não ? ").upper()
 		if choice == "SIM": contactos[contact] = contactHandler(id)
 		else: quit()
         #break
 	if 'apagar' == cmd:
+		"""Handle delete capabilities"""
 		print("Deseja APAGAR o contacto de: ", contactos[contact]['name'],"?")
 		choice = input("Sim ou não ? \n").upper()
 		if choice == "SIM": del contactos[contact]
         #break
     
+	"""Writes changes to file"""
 	with open('./sources/contactos.json', 'w') as file:
 		file.write(json.dumps(contactos))
 	exit()
