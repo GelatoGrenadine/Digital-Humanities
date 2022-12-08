@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_lite.rng" 
+type="application/xml" 
+schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_lite.rng" 
+type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Edição Digital dos Contos de Eça de Queiroz</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Exercício da Disciplina de Edição Digital</p>        
+         </publicationStmt>
+         <sourceDesc>
+           <bibl>
+              <author>Eça de Queiroz</author>
+              <editor>Raquel Rossi Ferreira</editor>
+              <edition>Terceira Edição</edition>
+              <date>1913</date>
+              <pubPlace>Porto</pubPlace>
+              <publisher>Livraria Chardron, de Lelo e Irmão</publisher>
+           </bibl>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <div type="preface">
+        <head>Prefácio da Terceira Edição</head>
+        <p>A obra dispersa de <name rendition="#italic">Eça de Queiroz</name>, desde os seus primeiros folhetins nan <emph rend="italic">Revolução 
+        de Setembro </emph>e na <emph rend="italic">Gazeta de Portugal</emph> até à sua assídua colaboração na <emph rend="italic">Gazeta de 
+        Notícias</emph>, do <placeName where='Rio de Janeiro'></placeName>, e na <emph rend="italic">Revista Moderna</emph>, é muito vasta, muito variada e 
+        encerra algumas das mais maravilhosas páginas do grande saudoso escritor. </p>
+        <p>Os seus editores começam, com a publicação do presente volume, a <emph rend="italic">compilação da 
+        obra póstuma e dispersa</emph>, recolhendo cuidadosamente êsse riquíssimo espólio, para o 
+        salvar, pelo livro, do esquecimento a que o condenariam a dispersão das fôlhas diárias 
+        e a sua efémera vida.</p>
+        <p>Os <emph rend="italic">Contos </emph>compreendem todos os escritos dêste género que <name rendition="#italic">Eça de Queiroz</name> nos 
+        deixou, a partir das <emph rend="italic">Singularidades duma rapariga loura</emph>. Os seus primitivos escritos 
+        na <emph rend="italic">Revolução</emph>. e na <emph rend="italic">Gazeta de Portugal</emph>., obra mixta de fantasia e de crítica, seguir-se 
+        hão a êste em outro volume, já no prelo, e a que uma feliz indicação do <abbr>snr.</abbr>
+        <expan>Senhor</expan>. <name rendition="#italic">Jaime 
+        Batalha Reis</name> nos revelou o próprio título que o autor determinara dar-lhe:<emph rend="italic"> Prosas 
+        Bárbaras.</emph></p>
+        <p>Mais três volumes serão destinados a coligir as suas correspondências para os 
+        jornais brasileiros, conservando-se-lhes como títulos as rúbricas sob que ali eram 
+        publicadas: <emph rend="italic">Cartas de Inglaterra, Ecos de Paris e Cartas Familiares</emph>; e outros dois 
+        encerrarão a sua copiosa vária, onde se misturam impressões de literatura e de arte, 
+        artigos sôbre política geral, estudos biográficos, notas de viagem, ensaios, críticas, 
+        polémica, etc.</p>
+        <p>Completará esta série um derradeiro volume com o precioso inédito do <abbr>S.</abbr>
+        <expan>Senhor</expan> <name rendition="#italic">Cristóvão</name>, tal como o admirável artista o deixou: um esbôço magnífico, um 
+        verdadeiro improviso, traçado com largueza numa primeira factura pronta e fluente, 
+        onde a sua imaginação e a sua prosa brotam em jorros impetuosos e borbulhantes, em 
+        contrário da falsa lenda que fazia de <name rendition="#italic">Eça de Queiroz</name> um criador moroso, e um escritor 
+        sem espontaneidade.</p>
+        <p>A título de curiosidade, para mostrar o poder de desenvolvimento e ampliação das 
+        suas faculdades imaginativas e como um exemplo dos seus processos de trabalho, 
+        inserimos no presente volume o conto intitulado <emph rend="italic">Civilização</emph>, que o autor,
+        amplificando-o, transformou depois na deliciosa novela <emph rend="italic">A Cidade e as Serras.</emph></p>
+        <p>Ao terminar estas linhas, os editores cumprem o grato dever de testemunhar o seu 
+        reconhecimento ao <abbr>snr.</abbr><expan>Senhor</expan> <name rendition="#italic">Francisco Ramos Paz</name>, co-proprietário da <emph rend="italic">Gazeta de Notícias</emph>, 
+        do <placeName where='Rio de Janeiro'></placeName>, que, com o mais vivo interesse pela publicação dos escritos 
+        dispersos de <name rendition="#italic">Eça de Queiroz</name>, lhes forneceu obsequiosamente toda a vasta colaboração 
+        do ilustre romancista no importante jornal fluminense.</p>
+        <dateline>
+            <placeName>Porto,</placeName>
+            <date when="1903">1903.</date>
+        </dateline>
+        <signed>Lelo e Irmão</signed>
+      </div>
+    </front>
+    <body>
+        <div type="capítulo" n="1">
+            <head>Singularidades duma rapariga loura</head>
+            <p>Começou por me dizer que o seu caso era simples—e que se chamava <name rendition="#italic">Macário...</name></p>
+            <p>Devo contar que conheci êste homem numa estalagem do <placeName where='Minho, Portugal'></placeName>. Era alto e grosso: tinha uma calva larga, luzidia e 
+            lisa, com repas brancas que se lhe erriçavam em redor: e os seus olhos pretos, com a pele em roda engelhada e 
+            amarelada, e olheiras papudas, tinham uma singular clareza e rectidão—por trás dos seus óculos redondos com aros 
+            de tartaruga. Tinha a barba rapada, o queixo saliente e resoluto. Trazia uma gravata de setim negro apertada por trás 
+            com uma fivela; um casaco comprido côr de pinhão, com as mangas estreitas e justas e canhões de veludilho. E pela 
+            longa abertura do seu colete de sêda, onde reluzia um grilhão antigo, saíam as pregas moles de uma camisa bordada.</p>
+            <p>Era isto em setembro: já as noites vinham mais cedo, com uma friagem fina e sêca e uma escuridão aparatosa. Eu 
+            tinha descido da diligência, fatigado, esfomeado, tiritando num cobrejão de listas escarlates.</p>
+            <p>Vinha de atravessar a serra e os seus aspectos pardos e desertos. Eram oito horas da noite. Os céus estavam 
+            pesados e sujos. E, ou fôsse um certo adormecimento cerebral produzido pelo rolar monótono da diligência, ou fôsse
+            a debilidade nervosa da fadiga, ou a influência da paizagem escarpada e árida, sob o côncavo silêncio noturno, ou a 
+            opressão da electricidade, que enchia as alturas—o facto é que eu—que sou naturalmente positivo e realista—tinha 
+            vindo tiranizado pela imaginação e pelas quimeras. Existe, no fundo de cada um de nós, é certo,—tam friamente 
+            educados que sejâmos—um resto de misticismo; e basta às vezes uma paizagem soturna, o vélho muro de um 
+            cemitério, um ermo ascético, as emolientes brancuras de um luar, para que êsse fundo místico suba, se alargue como
+            um nevoeiro, encha a alma, a sensação e a idea, e fique assim o mais matemático ou o mais crítico—tam 
+            triste, tam visionário, tam idealista—como um vélho monge poeta. A mim, o que me lançara na quimera e no sonho, fôra o aspecto do mosteiro de Rastelo, que eu tinha visto, à claridade suave e outonal da tarde, na sua doce colina. Então, 
+            emquanto anoitecia, a diligência rolava contínuamente ao trote esgalgado dos seus magros cavalos brancos, e o 
+            cocheiro, com o capuz do gabão enterrado na cabeça, ruminava o seu cachimbo—eu pus-me, elegíacamente, 
+            ridículamente, a considerar a esterilidade da vida: e desejava ser um monge, estar num convento, tranqùilo, entre 
+            arvoredos ou na murmurosa concavidade dum vale, e emquanto a água da cêrca canta sonoramente nas bacias de 
+            pedra, ler a Imitação, e ouvindo os rouxinóis nos loireirais ter saudades do céu.—Não se pode ser mais estúpido. Mas
+            eu estava assim, e atribuo a esta disposição visionária a falta de espírito—a sensação—que me fez a história daquele 
+            homem dos canhões de veludilho.</p>
+            <p>A minha curiosidade começou à ceia, quando eu desfazia o peito de uma galinha afogada em arroz branco, com 
+            fatias escarlates de paio—e a criada, uma gorda e cheia de sardas, fazia espumar o vinho verde no copo, fazendo-o
+            cair de alto de uma caneca vidrada. O homem estava defronte de mim, comendo tranqùilamente a sua geleia: 
+            perguntei-lhe, com a bôca cheia, o meu guardanapo de linho de Guimarães suspenso nos dedos—se êle era de <placeName where='Vila
+            Rial, Portugal'></placeName>.</p>
+            <sp>
+            <p>—Vivo lá. Há muitos anos—disse-me êle.</p>
+            <p>—Terra de mulheres bonitas, segundo me consta—disse eu.</p>
+            <p>O homem calou-se.</p>
+            <p>—Hein?—tornei.</p>
+            </sp>
+        </div>
+    </body>
+    <back>
+        <div type="appendix">
+            <head>Obras de EÇA DE QUEIROZ</head>
+            <listBibl>
+            <p><emph>O Crime do Padre Amaro</emph>, 1 vol. 1$200</p>
+            <p><emph>O Primo Bazílio</emph>, 1 volume 1$000</p>
+            <p><emph>O Mandarim</emph>, 1 volume 500</p>
+            <p><emph>Os Maias</emph>, 2 grossos volumes 2$000</p>
+            <p><emph>A Relíquia</emph>, 1 grosso volume 1$000</p>
+            <p><emph>Correspondência de Fradique Mendes</emph>, 1 volume 600</p>
+            <p><emph>A Ilustre Casa de Ramires</emph>, 1 volume 1$000</p>
+            <p><emph>A Cidade e as Serras</emph>, 1 volume 800</p>
+            <p><emph>Contos</emph>, 1 volume 600</p>
+            <p><emph>Prosas Bárbaras</emph>, 1 volume 600</p>
+            <p><emph>Cartas de Inglaterra</emph>, 1 volume 500</p>
+            <p><emph>Ecos de Paris</emph>, 1 volume 500</p>
+            <p><emph>Cartas Familiares</emph>, 1 vol. 500</p>
+            <p><emph>Notas Contemporâneas</emph>, 1 volume 1$000</p>
+            <p><emph>Últimas páginas</emph> (manuscritos inéditos), 1 vol. 1$000</p>
+            <p><emph>Páginas esquecidas</emph>, com um largo estudo de José Sampaio (Bruno) no prélo</p>
+            <p><emph>As Minas de Salomão</emph>, (tradução), 1 volume 600</p>
+            <p><emph>Revista de Portugal</emph>, 4 grossos volumes (colaboração) 12$000</p>
+            </listBibl>
+            <p>A propriedade literária e artística está garantida em todos os países que aderiram à convenção de Berne—(Em 
+            <placeName where='Portugal'></placeName>, pela lei de <date when='1911-03-18'>18 de março de 1911</date> . No <placeName where='Brasil'></placeName> pela lei n.º 2.577 de <date when='1912-01-17'>17 de Jan. de 1912</date>.)</p>
+        </div>
+    </back>
+  </text>
+</TEI>
