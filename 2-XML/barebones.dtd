@@ -1,0 +1,79 @@
+<!-- common usage -->
+
+<!ELEMENT p ANY>
+<!ELEMENT pb ANY><!ATTLIST pb n CDATA #IMPLIED >
+<!ELEMENT lb ANY>
+<!ELEMENT pc ANY><!ATTLIST pc force CDATA #IMPLIED >
+<!ELEMENT sup ANY>
+<!ELEMENT u ANY>
+<!ELEMENT abbr ANY><!ATTLIST abbr expan CDATA #REQUIRED >
+
+
+<!ELEMENT date ANY><!ATTLIST date when CDATA #IMPLIED >
+<!ELEMENT dateline ANY><!ATTLIST dateline when CDATA #REQUIRED >
+
+<!ELEMENT name ANY><!ATTLIST name type CDATA #IMPLIED >
+<!ELEMENT persName ANY><!ATTLIST persName type CDATA #IMPLIED >
+<!ELEMENT placeName ANY><!ATTLIST placeName type CDATA #IMPLIED >
+<!ELEMENT geogName ANY><!ATTLIST geogName type CDATA #IMPLIED >
+<!ELEMENT settlement ANY><!ATTLIST settlement type CDATA #IMPLIED >
+
+<!ELEMENT dimensions ANY>
+<!ELEMENT height ANY><!ATTLIST height units CDATA #REQUIRED >
+<!ELEMENT width ANY><!ATTLIST width units CDATA #REQUIRED >
+
+<!ELEMENT author ANY>
+<!ELEMENT signed ANY>
+
+
+<!-- Lightly structured -->
+<!ELEMENT TEI.2
+	(teiHeader, text) >
+
+	<!ELEMENT teiHeader
+		(fileDesc)>
+		<!ELEMENT fileDesc
+			(titleStmt, publicationStmt, sourceDesc)>
+			<!ELEMENT titleStmt
+				(title, respStmt)>
+				<!ELEMENT title
+					(#PCDATA)>
+				<!ELEMENT respStmt
+					(resp, name)>
+					<!ELEMENT resp
+						(#PCDATA)>
+
+			<!ELEMENT publicationStmt ANY>
+				<!ELEMENT publisher ANY>
+				<!ELEMENT pubPlace ANY>
+
+			<!ELEMENT sourceDesc ANY>
+				<!ELEMENT letDesc ANY><!ATTLIST letDesc status CDATA #REQUIRED >
+					<!ELEMENT letIdentifier ANY>
+						<!ELEMENT country ANY>
+						<!ELEMENT institution ANY>
+						<!ELEMENT repository ANY>
+						<!ELEMENT collection ANY>
+						<!ELEMENT idno ANY>
+					<!ELEMENT letHeading ANY>
+						<!ELEMENT addressee ANY>
+						<!ELEMENT placeLet ANY>
+						<!ELEMENT dateLet ANY>
+					<!ELEMENT physDesc ANY>
+					<!ELEMENT envOcc ANY>
+					<!ATTLIST envOcc
+						occ (yes|no) #REQUIRED >
+					<!ELEMENT letContents ANY>
+						<!ELEMENT type ANY>
+						<!ELEMENT support ANY>
+						<!ELEMENT extent ANY>
+						<!ELEMENT layout ANY>
+						<!ELEMENT condition ANY>
+
+	<!ELEMENT text ANY>
+		<!ELEMENT body ANY>
+		<!ELEMENT opener ANY>
+		<!ELEMENT closer ANY>
+			<!ELEMENT salute ANY>
+		<!ELEMENT ps ANY>
+
