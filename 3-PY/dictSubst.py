@@ -9,9 +9,12 @@ except FileNotFoundError:
 	dictSubst = {
 #Normalizing white spaces, later <head> will have '\n\n'
 ' {1,}'                 : ' ',
-'\n.{1,}' 			: '\n', # dealt in body of functioon
-r'\
-</p>'				: '</p>',
+# '\n.{1,}' 			: '\n', # dealt in body of functioon
+# r'\
+# </'				: r'</',
+r'\.\^([a-z]{1,3})'	:  r'.<sup>\1</sup>',
+'Il.<sup>mo</sup>'	:	'<abbr expan="Ilustríssimo">Il.<sup>mo</sup></abbr>',
+'([V|v]\. [E|e]x\.<sup>a</sup>)' : r'\1',
 
 #Normalize some superscript
 'ª'						: '<sup>a</sup>',
@@ -26,7 +29,7 @@ r'\
 '</head>'				: r'</head>\n',
 
 #'\.\^a' :'.<sup>a</sup>',
-'\.\^([a-z]{1,3})' : r'.<sup>\1</sup>'
+#'\.\^([a-z]{1,3})' : r'.<sup>\1</sup>'
 }
 	pass
 except: print('ERRO: dicionário "dictSubst" não existe, nem pôde ser criado')
@@ -43,17 +46,17 @@ def substDict(text,dictSubst):
 	:return: str
 
 	>>> substDict("O gato <b>preto</b> cruzou   a   estrada<br />",dictSubst)
-	"O gato <emph rend='bold'>preto</emph> cruzou a estrada<lb />"
+	'O gato <emph rend="bold">preto</emph> cruzou a estrada<lb />'
 	>>> substDict("Que V. Ex.^a tem romances na sua bibliotheca",dictSubst)
-	"Que V. Ex.<sup>a</sup> tem romances na sua bibliotheca"
+	'Que V. Ex.<sup>a</sup> tem romances na sua bibliotheca'
 	>>> substDict("Que o Il.^mo tem romances na sua bibliotheca",dictSubst)
-	"Que o Il.<sup>mo</sup> tem romances na sua bibliotheca"
+	'Que o <abbr expan="Ilustríssimo">Il.<sup>mo</sup></abbr> tem romances na sua bibliotheca'
 	"""
 
 	# regex = re.compile("|".join(map(repr, dictSubst.keys())))
 	# return regex.sub(lambda match: dictSubst[match.group(0)], text)
 	for key, value in dictSubst.items():
-		print(key)
+		#print(key)
 		text = re.sub(key,value, text)
 	return text
 
