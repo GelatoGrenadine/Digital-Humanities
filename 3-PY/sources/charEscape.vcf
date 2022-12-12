@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//Mac OS X 10.14.6//EN
+N:MusterMann;Hans;;;
+FN:Hans MusterMann
+NOTE:' " \, + \\ < > \;\nnewline & ü ß
+UID:165c543996f942e7
+X-ABUID:09FEEC36-67AA-47E3-A125-0165E69D674C:ABPerson
+END:VCARD

@@ -1,0 +1,20 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//Mac OS X 10.14.6//EN
+N:Ascii;Contact;;;
+FN:Contact Ascii
+TEL;type=CELL;type=VOICE;type=pref:1
+NOTE:test if UID will show
+UID:181300a41042b66f
+X-ABUID:1DE89718-4F0A-4550-928D-750022995574:ABPerson
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//Mac OS X 10.14.6//EN
+N:utf-8;Contäct;;;
+FN:Contäct utf-8
+TEL;type=CELL;type=VOICE;type=pref:1
+NOTE:test if UID will be shown
+UID:68dd576d94937f4d
+X-ABUID:50668838-B85B-432C-9D75-029AB9762378:ABPerson
+END:VCARD

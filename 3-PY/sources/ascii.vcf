@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//Mac OS X 10.14.6//EN
+N:Ascii;Contact;;;
+FN:Contact Ascii
+TEL;type=CELL;type=VOICE;type=pref:1
+NOTE:test if UID will show
+UID:181300a41042b66f
+X-ABUID:1DE89718-4F0A-4550-928D-750022995574:ABPerson
+END:VCARD
