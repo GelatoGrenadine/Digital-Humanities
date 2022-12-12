@@ -1,5 +1,8 @@
 *.DS_Store
 *.log
+_*.md
+_*.pdf
+_*.py
 2-XML/*.code/
 2-XML/CASTELO-BRANCO,Camilo-AmorDePerdição.txt
 2-XML/dict.py
