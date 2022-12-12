@@ -2,8 +2,9 @@
 	@os 	to make sources directory, if none exists os.mkdir('sources')
 	@sys	to take in command line arguments
 	@json	to handle dictionaries & exporting
-	@uuid	to atribure unique id, truncated to size 4"""
-import os, sys, json, uuid
+	@uuid	to atribure unique id, truncated to size 4
+	@re		to unescape vCards's , ; \ """
+import os, sys, json, uuid, re
 
 """argList	to restrain possible input"""
 argList = ["ajuda", "adicionar", "lista", 
@@ -19,8 +20,26 @@ def idInList(id,contactos):
 	return False
 
 def importHandler(ficheiro_vcf):
-	"""vCard v3 & v4 file.vcf import function
-		currently importable items ['N:','TEL','EMAIL','NOTE:','UID:']"""
+	"""vCard v3 & v4 file.vcf basic import function
+		currently importable items ['N:','TEL','EMAIL','NOTE:','UID:'?]
+		assuming utf-8 encoding when importing v3
+		a non-standard _xxx UID will be attributed if none present 
+		
+		tested against: 
+			v3:
+				https://www.w3.org/2002/12/cal/vcard-examples/john-doe.vcf
+
+				files created on Apple Contacts Version 12.0
+			
+			v4 contained within this article:
+				https://www.w3.org/2002/12/cal/vcard-examples/john-doe.vcf
+	
+	PS: benchmark against using:
+		https://pypi.org/project/vcfxplr/
+	PS2: export as QR code in terminal 77 """
+
+	def unescape(text):
+		return re.sub(r'\\([,|;|\\])',r'\1',text)
 
 	try: 
 		with open(ficheiro_vcf, 'r', encoding='utf8') as file:
@@ -41,16 +60,25 @@ def importHandler(ficheiro_vcf):
 					email = (mail,mLbl)
 					c['email'].append(email)
 				elif line.find('NOTE:') == 0:
-					c['note'] = line[5:-1]
+					c['note'] = unescape(line[5:-1])
 				elif line.find('UID:') == 0: 
-					c['id'] = line[4:8]
-					print('id ['+c['id']+']:',c['name'][1],c['name'][0], end='')
+					#Treat this case:
+					# X-ABUID:5AD380FD-B2DE-4261-BA99-DE1D1DB52FBE\:ABPerson
+					s = -line[::-1].find(':')
+					print(line[s:][:4])
+					c['id'] = line[s:][:4]
+				elif line.find('UID:',0,8) > 0 and c['id'] == '': 
+					#print(line.find('UID:',0,8))
+					s = -line[::-1].find(':')
+					c['id'] = line[s:s+4]
 				elif line.find('END:VCARD') == 0: 
+					if c['id'] == '': c['id'] = '_' + str(uuid.uuid4())[0:3]
 					known = idInList(c['id'],contactos)
+					c_i = 'id ['+c['id']+']: '+c['name'][1]+' '+c['name'][0]
 					if not known: 
+						print(c_i,'irá ser adicionado')
 						contactos.append(c)
-						print('irá ser adicionado')
-					else: print('\trecusado, já na lista')
+					else: print(c_i,'recusado, já na lista')
 					c,c['name'],c['phone'],c['email']={},(),[],[]
 					c['note']=""
 				# break
@@ -146,22 +174,22 @@ def listContacts(contactos):
 			if mail[0] != '': 
 				print(
 	f"\n     |{mail[1]:>22} eMail: {mail[0]:<12}", end='')
-		if 0 < len(c['note']) <32: print(
+		if 0 < len(c['note']) <38: print(
 	f"\n     |                        Nota: {c['note']:<22}", end='')
-		elif len(c['note']) > 32:  
+		elif len(c['note']) > 38:  
 			lNote = len(c['note'])
-			parts = int(lNote/32)+1 if lNote%32 else lNote/32
+			parts = int(lNote/38)+1 if lNote%38 else lNote/38
 
 			for part in range(parts):
 				if part == 0: print(
-	f"\n     |                        Nota: {c['note'][0:32]:<22}", end='')
+	f"\n     |"+" "*24+f"Nota: {c['note'][0:38]:<22}", end='')
 				else: 
-					s= part*32
-					f= None if part == parts-1 else (part+1)*32
-					print(f"\n     |                        "
-	f"      {c['note'][s:f]:<22}", end='')
+					s= part*38
+					f= None if part == parts-1 else (part+1)*38
+					print(
+	f"\n     |"+" "*30+f"{c['note'][s:f]:<22}", end='')
 		print(
-	'\n-----|----------------------------:---------------------------------|')
+	 '\n-----|'+'-'*28+':'+'-'*42+'|')
 
 def yamlHandler(contactos):
 	"""Handle YAML export"""

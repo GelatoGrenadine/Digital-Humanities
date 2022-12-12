@@ -1,15 +1,25 @@
 # -*- coding: utf-8 -*-
-import os, sys, itertools, re
-import requests, html, json
-from bs4 import BeautifulSoup as bs
-from lxml import etree
-import xml.etree.cElementTree as ET
-from json2xml import json2xml
+import os, sys, itertools, re			# for basic i/o
+
+import requests, html, json 			# for web fetching & handling
+from bs4 import BeautifulSoup as bs		# for web handling
+
+from lxml import etree					# for element building
+import xml.etree.cElementTree as ET		# for element building
+
+from json2xml import json2xml			# for conversion
 from json2xml.utils import readfromjson #, readfromurl, readfromstring
-from xml.dom import minidom
-import spacy
+
+from xml.dom import minidom				# for dom handling
+
+import spacy							# for nlp
 from spacy import displacy, tokenizer
 from spacy.language import Language
+
+from tagHandler import tagHandler
+
+#https://raw.githubusercontent.com/jjoao/hd-camilo/main/Obra/Camilo-A_queda_de_um_Anjo-Grafia_actualizada.txt
+#https://raw.githubusercontent.com/jjoao/hd-camilo/main/Obra/Camilo-A_queda_de_um_Anjo-Grafia_da_Epoca.txt
 
 try:
 	nlp = spacy.load("pt_core_news_lg")
@@ -18,7 +28,7 @@ except:
 		  "\npython -m spacy download pt_core_news_lg")
 
 try:
-	with open('./sources', 'r', encoding='utf8') as folder:
+	with open('./sources', 'r') as folder:
 			folder.read()
 except FileNotFoundError: os.mkdir('sources')
 except IsADirectoryError: pass
@@ -28,22 +38,22 @@ lineUp = '\033[1A'
 lineClear = '\x1b[2K'
 spinner = itertools.cycle(['|', '/', '-', '\\'])
 
+"""REVIEW!"""
 def cmdNiceties():
 	print(lineClear, end ='\r')
 	sys.stdout.write(next(spinner))   # write the next character
 	sys.stdout.flush()                # flush stdout buffer (actual character display)
 	sys.stdout.write('\b')		       # erase the last written char
 
+"""REVIEW!"""
 def prettify(elem):
     """Return a pretty-printed XML string for the Element."""
     rough_string = ElementTree.tostring(elem, 'utf-8')
     reparsed = minidom.parseString(rough_string)
     return reparsed.toprettyxml(indent="  ")
 
-"""Functions for text handling"""
-
+"""TEXT HANDLING Functions"""
 dictSubst = {
-
 #Normalizing white spaces, later <head> will have '\n\n'
 ' {1,}'                 : ' ',
 '\n.{1,}' 			: '\n', # dealt in body of functioon
@@ -62,6 +72,7 @@ r'\
 '</head>'				: r'</head>\n'
 }
 
+"""REVIEW!"""
 def substDict(text):
 	regex = re.compile("|".join(map(repr, dictSubst.keys())))
 	return regex.sub(lambda match: dictSubst[match.group(0)], text)
@@ -84,7 +95,7 @@ def titleHandler(text):
 def textHandler(text):
 	t0	= decodeHandler(text)
 	t1	= span_pagenumToPb(t0)
-	t2	= quotationToquote(t1)
+	t2	= euQuotationToQuoteTag(t1)
 	t3	= iToEmph(t2)
 	t4	= stripSpan(t3)
 	t5	= newLine(t4)
@@ -114,25 +125,26 @@ def stripA(text):
 	t1	= re.sub(r'<a [^>]*>|<\/a>', r'', t0)
 	return t1
 
+def iToEmph(text):
+	t0	= re.sub(r'<i[^>]*?>(.*?)</i>', r'<emph rend="italic">\1</emph>', text)
+	t1	= re.sub(r'<i>', r'<emph rend="italic">', t0)
+	t99	= re.sub(r'</i>', r'</emph>', t1)
+	return t99
+
 def span_pagenumToPb(text):
 	return re.sub(
 r'(?i)<span><span class="pagenum ws-pagenum" id="([0-9]{1,3}|(XC|XL|L?X{0,3})?(IX|IV|V?I{0,3})?)".*\/><\/span>', 
 r'<pb n="\1" />', text)
 
-def quotationToquote(text):
+def euQuotationToQuoteTag(text):
 	return re.sub(r'«(.*?)»', r'<quote>\1</quote>', text)
-
-def iToEmph(text):
-	t0	= re.sub(r'<i[^>]*>(.*?)</i>', r'<emph rend="italic">\1</emph>', text)
-	t1	= re.sub(r'<i>', r'<emph rend="italic">', t0)
-	t99	= re.sub(r'</i>', r'</emph>', t1)
-	return t99
 
 def ref(text):
 	t0 = re.sub(r'<sup class="reference" [^>]*><a [^>]*>\[(\d+)\]</a></sup>', 
 				r'<ref><sup>\1</sup></ref>', text)
 	return t0
 
+"""XML Stem"""
 #root & stem of a XML into which data will be plugged-in
 root = ET.Element("TEI.2"); 
 if True:
@@ -146,6 +158,7 @@ if True:
 	stemTree = ET.ElementTree(root)
 	stemTree.write("./sources/stemTree.xml")
 
+"""JSON Mockup"""
 #mockup of book as dictionary/json structure
 book = {
 	"meta": {},
