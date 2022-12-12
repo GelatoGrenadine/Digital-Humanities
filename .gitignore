@@ -9,8 +9,9 @@
 3-PY/exportado.*
 3-PY/sources/CASTELO-BRANCO,Camilo-AmorDePerdição.*
 3-PY/sources/contactos.json
+3-PY/sources/dict*.json*
+3-PY/sources/example*.vcf
 3-PY/sources/forecasts.json
-3-PY/sources/john-doe.vcf
 3-PY/sources/json2xm.xml
 3-PY/sources/stemTree.xml
 3-PY/tTree.xml
